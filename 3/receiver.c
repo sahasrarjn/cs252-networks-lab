@@ -8,6 +8,11 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <math.h>
+#include <unistd.h>
+#include <errno.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
 
 struct frame{
 	int ack;
@@ -15,10 +20,10 @@ struct frame{
     char data[1024];
 };
 
-float unif(float left, float right) {
-    float randomNumber = sin(rand() * rand());
-    return left + (right - left) * fabs(randomNumber);
-}
+// float unif(float left, float right) {
+//     float randomNumber = sin(rand() * rand());
+//     return left + (right - left) * fabs(randomNumber);
+// }
 
 int main(int argc, char *argv[]){
 
@@ -72,7 +77,7 @@ int main(int argc, char *argv[]){
 			printf("%s\n", rec.data);
 			fprintf(fptr, "%s\n", rec.data);
 
-			float random = unif(0.0, 1.0);
+			float random = (float)rand()/RAND_MAX;
 			if(random < dropProb){
 				// No ACK generated
 				printf("Frame dropped\n");
@@ -87,7 +92,7 @@ int main(int argc, char *argv[]){
 				char sqn[100];
 
 				// ---- here ---- 
-				sprintf(sqn, "%d", seqNo);
+				sprintf(sqn, "%d", send.seqNo);
 				strcat(send.data, sqn);
 				// ---- here ---- 
 
@@ -104,7 +109,7 @@ int main(int argc, char *argv[]){
 			char sqn[100];
 			
 			// ---- here ---- 
-			sprintf(sqn, "%d", seqNo);
+			sprintf(sqn, "%d", send.seqNo);
 			strcat(send.data, sqn);
 			// ---- here ---- 
 

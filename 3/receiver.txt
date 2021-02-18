@@ -1,41 +1,10 @@
 Packet:1
-Acknowledgment:1
-Acknowledgment:2
 Acknowledgment:2
 Packet:2
-Acknowledgment:2
-Acknowledgment:3
 Acknowledgment:3
 Packet:3
-Acknowledgment:3
-Acknowledgment:4
 Acknowledgment:4
 Packet:4
-Acknowledgment:4
-Acknowledgment:5
 Acknowledgment:5
 Packet:5
-Frame dropped
-Packet:5
-Acknowledgment:5
 Acknowledgment:6
-Packet:6
-Acknowledgment:6
-Acknowledgment:7
-Packet:7
-Acknowledgment:7
-Acknowledgment:8
-Packet:8
-Frame dropped
-Packet:8
-Frame dropped
-Packet:8
-Frame dropped
-Packet:8
-Frame dropped
-Packet:8
-Acknowledgment:8
-Packet:9
-Acknowledgment:9
-Packet:10
-Acknowledgment:10
