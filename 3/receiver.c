@@ -14,6 +14,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
+// Frame structure
 struct frame{
 	int ack;
     int seqNo;
@@ -30,6 +31,7 @@ int main(int argc, char *argv[]){
 	FILE *fptr;
 	fptr = fopen("receiver.txt","w");
 
+    // reading CLI arguments
 	int ReceiverPort = atoi(argv[1]);
 	int SenderPort = atoi(argv[2]);
 	float dropProb;
@@ -41,6 +43,7 @@ int main(int argc, char *argv[]){
 
 	struct frame rec, send;	
 
+    // Socket binding
 	if((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0){ 
         perror("socket creation failed"); 
         exit(EXIT_FAILURE); 
@@ -61,14 +64,16 @@ int main(int argc, char *argv[]){
 	srand(time(0));
 	int seqNo=1; // First packet should have seq no = 1
 
+    // While loop to read frames
 	while(1){
 		int rec_size = recvfrom(sockfd, &rec, sizeof(rec), 0, (struct sockaddr*)&sender, &socket_size);
 
 		if(strcmp("exit", rec.data)==0){
-			// Stop the receiver
+			// Stop the receiver (exit code)
 			break;
 		}
 
+		// Check the received data
 		if (rec_size > 0 && seqNo == rec.seqNo && rec.ack == 0){
 			if(seqNo == rec.seqNo){
 				printf("%s\n", rec.data);

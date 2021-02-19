@@ -11,7 +11,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
-
+// Frame structure
 struct frame{
     int ack;
     int seqNo;
@@ -27,6 +27,7 @@ int main(int argc, char **argv){
     FILE *fptr;
     fptr = fopen("sender.txt", "w");
 
+    // reading CLI arguments
     int senderPort = atoi(argv[1]);
     int receiverPort = atoi(argv[2]);
     int RetransmissionTime = atoi(argv[3]);
@@ -40,6 +41,7 @@ int main(int argc, char **argv){
     int seqNo=1;
     struct frame send, rec;
 
+    // Socket binding
     if((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0){ 
         perror("socket creation failed"); 
         exit(EXIT_FAILURE); 
@@ -52,10 +54,12 @@ int main(int argc, char **argv){
     receiver.sin_addr.s_addr = inet_addr("127.0.0.1");
     unsigned int size_rec = sizeof(receiver);
 
+    // Few declerations for timer elements
     struct timeval tv;
     fd_set readfds;
     clock_t start, end;
 
+    // While loop to send frames
     while(seqNo <= P){
         tv.tv_sec = RetransmissionTime;
 
@@ -71,6 +75,7 @@ int main(int argc, char **argv){
         int resend = 0;
         int temp_time = 0;
 
+        // Send frame instructions
         send_frame:
             printf("%s\n", send.data);
             fprintf(fptr, "%s\n", send.data);
@@ -84,9 +89,6 @@ int main(int argc, char **argv){
             int rec_size = recvfrom(sockfd, &rec, sizeof(rec), 0, (struct sockaddr*)&receiver, &size_rec);
             end = clock() - start + temp_time;
 
-            // printf("%s\n", rec.data);
-            // printf("%lu, %f, %d", start, (float)end/CLOCKS_PER_SEC, RetransmissionTime);
-        
         if(rec_size > 0 && rec.ack == 1){
             if(rec.seqNo == seqNo+1){
                 // Accept the ACK and send next packet
@@ -99,18 +101,20 @@ int main(int argc, char **argv){
                     // Ignore the ACK
                     continue;
                 }else{
-
+                    // Invalid ACK, so program will send the frame again with the same timer
                     resend = 1;
                     temp_time = end;
                     goto send_frame;
                 }
             }
         }else{
+            // Timer Expired
             printf("Transmission Timer Expired\n");
             fprintf(fptr,"Transmission Timer Expired\n");
         }
     }
 
+    // Closing the socket
     strcpy(send.data, "exit");
     sendto(sockfd, &send, sizeof(send), 0, (struct sockaddr*)&receiver, sizeof(receiver));
 
