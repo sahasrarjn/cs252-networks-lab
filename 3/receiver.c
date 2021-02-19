@@ -20,11 +20,6 @@ struct frame{
     char data[1024];
 };
 
-// float unif(float left, float right) {
-//     float randomNumber = sin(rand() * rand());
-//     return left + (right - left) * fabs(randomNumber);
-// }
-
 int main(int argc, char *argv[]){
 
 	if (argc != 4){

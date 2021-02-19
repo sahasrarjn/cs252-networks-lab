@@ -1,10 +1,42 @@
 Packet:1
+Frame dropped
+Packet:1
+Frame dropped
+Packet:1
+Acknowledgment:2
+Acknowledgment:2
 Acknowledgment:2
 Packet:2
+Frame dropped
+Packet:2
+Frame dropped
+Packet:2
+Frame dropped
+Packet:2
+Frame dropped
+Packet:2
+Frame dropped
+Packet:2
+Frame dropped
+Packet:2
+Acknowledgment:3
 Acknowledgment:3
 Packet:3
+Frame dropped
+Packet:3
+Frame dropped
+Packet:3
+Acknowledgment:4
 Acknowledgment:4
 Packet:4
+Frame dropped
+Packet:4
+Frame dropped
+Packet:4
+Frame dropped
+Packet:4
+Acknowledgment:5
 Acknowledgment:5
 Packet:5
+Acknowledgment:6
 Acknowledgment:6

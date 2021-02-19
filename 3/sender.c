@@ -54,9 +54,10 @@ int main(int argc, char **argv){
 
     struct timeval tv;
     fd_set readfds;
-    tv.tv_usec = RetransmissionTime;
+    clock_t start, end;
 
     while(seqNo <= P){
+        tv.tv_usec = RetransmissionTime;
 
         // Prepare frame
         send.seqNo = seqNo;
@@ -68,17 +69,31 @@ int main(int argc, char **argv){
         sprintf(sqn, "%d", seqNo);
         strcat(send.data, sqn);
         // ---- here ---- 
+        int resend = 0;
+        int temp_time = 0;
 
-        printf("%s\n", send.data);
-        fprintf(fptr, "%s\n", send.data);
-        sendto(sockfd, &send, sizeof(send), 0, (struct sockaddr*)&receiver, sizeof(receiver));
-        setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO,(struct timeval *)&tv,sizeof(struct timeval));
-        int rec_size = recvfrom(sockfd, &rec, sizeof(rec), 0, (struct sockaddr*)&receiver, &size_rec);
+        send_frame:
+            printf("%s\n", send.data);
+            fprintf(fptr, "%s\n", send.data);
+            start = clock();
+            if(resend == 1){
+                start = temp_time;
+                tv.tv_usec = RetransmissionTime - start;
+            }
+            sendto(sockfd, &send, sizeof(send), 0, (struct sockaddr*)&receiver, sizeof(receiver));
+            setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO,(struct timeval *)&tv,sizeof(struct timeval));
+            int rec_size = recvfrom(sockfd, &rec, sizeof(rec), 0, (struct sockaddr*)&receiver, &size_rec);
+            end = clock() - start + temp_time;
         
         if(rec_size > 0 && rec.ack == 1 && rec.seqNo == seqNo+1){
             printf("%s\n", rec.data);
             fprintf(fptr, "%s\n", rec.data);
             seqNo++;
+        }else if(end < RetransmissionTime){
+            resend = 1;
+            temp_time = end;
+            printf("resent time:%d\n", temp_time);
+            goto send_frame;
         }else{
             printf("Transmission Timer Expired\n");
             fprintf(fptr,"Transmission Timer Expired\n");
