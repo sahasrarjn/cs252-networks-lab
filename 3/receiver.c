@@ -102,7 +102,7 @@ int main(int argc, char *argv[]){
 				}
 			}else{
 				// Incorrect seq no
-				send.seqNo = rec.seqNo+1;
+				send.seqNo = seqNo+1;
 				send.ack = 1;
 				strcpy(send.data, "Acknowledgment:");
 				char sqn[100];
