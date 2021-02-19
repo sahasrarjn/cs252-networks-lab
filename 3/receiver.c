@@ -59,63 +59,61 @@ int main(int argc, char *argv[]){
 	socket_size = sizeof(sender);
 
 	srand(time(0));
-	int seqNo=1;
+	int seqNo=1; // First packet should have seq no = 1
 
 	while(1){
 		int rec_size = recvfrom(sockfd, &rec, sizeof(rec), 0, (struct sockaddr*)&sender, &socket_size);
 
 		if(strcmp("exit", rec.data)==0){
+			// Stop the receiver
 			break;
 		}
 
 		if (rec_size > 0 && seqNo == rec.seqNo && rec.ack == 0){
-			printf("%s\n", rec.data);
-			fprintf(fptr, "%s\n", rec.data);
+			if(seqNo == rec.seqNo){
+				printf("%s\n", rec.data);
+				fprintf(fptr, "%s\n", rec.data);
 
-			float random = (float)rand()/RAND_MAX;
-			if(random < dropProb){
-				// No ACK generated
-				printf("Frame dropped\n");
-				fprintf(fptr, "Frame dropped\n");
-				continue;
+				float random = (float)rand()/RAND_MAX;
+				if(random < dropProb){
+					// No ACK generated
+					printf("Frame dropped\n");
+					fprintf(fptr, "Frame dropped\n");
+					continue;
+				}else{
+					// Generate ACK
+					send.seqNo = rec.seqNo+1;
+					send.ack = 1;
+					strcpy(send.data, "Acknowledgment:");
+					char sqn[100];
+
+					sprintf(sqn, "%d", send.seqNo);
+					strcat(send.data, sqn);
+
+					sendto(sockfd, &send, sizeof(send), 0, (struct sockaddr*)&sender, socket_size);
+					printf("%s\n", send.data);
+					fprintf(fptr, "%s\n", send.data);
+					seqNo++;
+				}
 			}else{
-				// Generate ACK
+				// Incorrect seq no
 				send.seqNo = rec.seqNo+1;
 				send.ack = 1;
-				// Add seq no here (i.e. x+1 or send.seqNo)
 				strcpy(send.data, "Acknowledgment:");
 				char sqn[100];
-
-				// ---- here ---- 
+				
 				sprintf(sqn, "%d", send.seqNo);
 				strcat(send.data, sqn);
-				// ---- here ---- 
 
 				sendto(sockfd, &send, sizeof(send), 0, (struct sockaddr*)&sender, socket_size);
 				printf("%s\n", send.data);
 				fprintf(fptr, "%s\n", send.data);
-				seqNo++;
 			}
-		}else if(seqNo != rec.seqNo){
-			// Send same ACK again
-			send.seqNo = rec.seqNo+1;
-			send.ack = 1;
-			strcpy(send.data, "Acknowledgment:");
-			char sqn[100];
-			
-			// ---- here ---- 
-			sprintf(sqn, "%d", send.seqNo);
-			strcat(send.data, sqn);
-			// ---- here ---- 
-
-			sendto(sockfd, &send, sizeof(send), 0, (struct sockaddr*)&sender, socket_size);
-			printf("%s\n", send.data);
-			fprintf(fptr, "%s\n", send.data);
+		
 		}else{
 			printf("Frame Not Received\n");
 			fprintf(fptr, "Frame Not Received\n");
 		}
-			
 	}
 
 	close(sockfd);

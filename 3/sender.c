@@ -57,18 +57,17 @@ int main(int argc, char **argv){
     clock_t start, end;
 
     while(seqNo <= P){
-        tv.tv_usec = RetransmissionTime;
+        tv.tv_sec = RetransmissionTime;
 
         // Prepare frame
         send.seqNo = seqNo;
         send.ack = 0;
         strcpy(send.data, "Packet:");
         char sqn[100];
-
-        // ---- here ---- 
+        
         sprintf(sqn, "%d", seqNo);
         strcat(send.data, sqn);
-        // ---- here ---- 
+        
         int resend = 0;
         int temp_time = 0;
 
@@ -78,22 +77,34 @@ int main(int argc, char **argv){
             start = clock();
             if(resend == 1){
                 start = temp_time;
-                tv.tv_usec = RetransmissionTime - start;
+                tv.tv_sec = RetransmissionTime - start;
             }
             sendto(sockfd, &send, sizeof(send), 0, (struct sockaddr*)&receiver, sizeof(receiver));
             setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO,(struct timeval *)&tv,sizeof(struct timeval));
             int rec_size = recvfrom(sockfd, &rec, sizeof(rec), 0, (struct sockaddr*)&receiver, &size_rec);
             end = clock() - start + temp_time;
+
+            // printf("%s\n", rec.data);
+            // printf("%lu, %f, %d", start, (float)end/CLOCKS_PER_SEC, RetransmissionTime);
         
-        if(rec_size > 0 && rec.ack == 1 && rec.seqNo == seqNo+1){
-            printf("%s\n", rec.data);
-            fprintf(fptr, "%s\n", rec.data);
-            seqNo++;
-        }else if(end < RetransmissionTime){
-            resend = 1;
-            temp_time = end;
-            printf("resent time:%d\n", temp_time);
-            goto send_frame;
+        if(rec_size > 0 && rec.ack == 1){
+            if(rec.seqNo == seqNo+1){
+                // Accept the ACK and send next packet
+                printf("%s\n", rec.data);
+                fprintf(fptr, "%s\n", rec.data);
+                seqNo++;
+            }else{
+                float timereq = (float)end/CLOCKS_PER_SEC;
+                if(timereq > RetransmissionTime){
+                    // Ignore the ACK
+                    continue;
+                }else{
+
+                    resend = 1;
+                    temp_time = end;
+                    goto send_frame;
+                }
+            }
         }else{
             printf("Transmission Timer Expired\n");
             fprintf(fptr,"Transmission Timer Expired\n");

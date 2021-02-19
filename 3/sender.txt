@@ -1,47 +1,40 @@
 Packet:1
-Transmission Timer Expired
-Packet:1
-Transmission Timer Expired
-Packet:1
-Transmission Timer Expired
-Packet:1
-Transmission Timer Expired
-Packet:1
 Acknowledgment:2
-Packet:2
-Transmission Timer Expired
-Packet:2
-Packet:2
-Transmission Timer Expired
-Packet:2
-Transmission Timer Expired
-Packet:2
-Transmission Timer Expired
-Packet:2
-Transmission Timer Expired
-Packet:2
-Transmission Timer Expired
 Packet:2
 Acknowledgment:3
 Packet:3
 Transmission Timer Expired
 Packet:3
-Transmission Timer Expired
-Packet:3
-Transmission Timer Expired
-Packet:3
 Acknowledgment:4
-Packet:4
-Transmission Timer Expired
-Packet:4
-Transmission Timer Expired
-Packet:4
-Transmission Timer Expired
-Packet:4
-Transmission Timer Expired
 Packet:4
 Acknowledgment:5
 Packet:5
-Transmission Timer Expired
-Packet:5
 Acknowledgment:6
+Packet:6
+Transmission Timer Expired
+Packet:6
+Acknowledgment:7
+Packet:7
+Transmission Timer Expired
+Packet:7
+Transmission Timer Expired
+Packet:7
+Acknowledgment:8
+Packet:8
+Transmission Timer Expired
+Packet:8
+Transmission Timer Expired
+Packet:8
+Acknowledgment:9
+Packet:9
+Transmission Timer Expired
+Packet:9
+Transmission Timer Expired
+Packet:9
+Transmission Timer Expired
+Packet:9
+Acknowledgment:10
+Packet:10
+Transmission Timer Expired
+Packet:10
+Acknowledgment:11
