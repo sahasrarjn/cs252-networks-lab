@@ -51,6 +51,7 @@ int main(int argc, char *argv[]){
 	
 	memset(&receiver, '\0', sizeof(receiver));
 	memset(&sender, '\0', sizeof(sender));
+	// Assigning port and inet address
 	receiver.sin_family = AF_INET;
 	receiver.sin_port = htons(ReceiverPort);
 	receiver.sin_addr.s_addr = inet_addr("127.0.0.1");
@@ -76,8 +77,8 @@ int main(int argc, char *argv[]){
 		// Check the received data
 		if (rec_size > 0 && seqNo == rec.seqNo && rec.ack == 0){
 			if(seqNo == rec.seqNo){
-				printf("%s\n", rec.data);
-				fprintf(fptr, "%s\n", rec.data);
+				// printf("%s\n", rec.data);
+				// fprintf(fptr, "%s\n", rec.data);
 
 				float random = (float)rand()/RAND_MAX;
 				if(random < dropProb){
@@ -116,6 +117,7 @@ int main(int argc, char *argv[]){
 			}
 		
 		}else{
+			// Frame not received
 			printf("Frame Not Received\n");
 			fprintf(fptr, "Frame Not Received\n");
 		}

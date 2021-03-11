@@ -16,17 +16,21 @@ We also implemented the ARQ using the time.h library and the setsockopt command 
 
 ## Usage Instructions 
 
-**Sender: **
+**Sender:**
 
 `gcc sender.c -o sender`
 
 `sender.c <SenderPort> <ReceiverPort> <RetransmissionTimer> <NoOfPacketsToBeSent>`
+
+Here, Retransmission Timer is an integer in second
 
 **Receiver:** 
 
 `gcc receiver.c -o receiver`
 
 `receiver.c <ReceiverPort> <SenderPort> <PacketDropProbability>`
+
+Here, Package Drop Prob is a float between 0 and 1
 
 P.S: 
 

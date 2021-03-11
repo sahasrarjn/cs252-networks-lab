@@ -49,6 +49,7 @@ int main(int argc, char **argv){
 
     memset(&receiver, '\0', sizeof(receiver));
     memset(&sender, '\0', sizeof(sender));
+    // Assigning port and inet address
     receiver.sin_family = AF_INET;
     receiver.sin_port = htons(receiverPort);
     receiver.sin_addr.s_addr = inet_addr("127.0.0.1");
@@ -92,8 +93,6 @@ int main(int argc, char **argv){
         if(rec_size > 0 && rec.ack == 1){
             if(rec.seqNo == seqNo+1){
                 // Accept the ACK and send next packet
-                printf("%s\n", rec.data);
-                fprintf(fptr, "%s\n", rec.data);
                 seqNo++;
             }else{
                 float timereq = (float)end/CLOCKS_PER_SEC;
