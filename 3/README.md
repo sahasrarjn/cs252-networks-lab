@@ -148,7 +148,7 @@ Main program:
 while(1){
 	// Receive data
   // Check the received data
-		if (rec_size > 0 && seqNo == rec.seqNo && rec.ack == 0){
+		if (rec_size > 0 && rec.ack == 0){
 			if(seqNo == rec.seqNo){
 				float random = (float)rand()/RAND_MAX;
 				if(random < dropProb){
@@ -179,3 +179,4 @@ while(1){
 https://github.com/nikhilroxtomar/UDP-Client-Server-Program-in-C
 
 [Beej’s Guide to Network Programming](http://www2.cs.uh.edu/~gnawali/courses/cosc4377-s12/readings/beejs.pdf)
+

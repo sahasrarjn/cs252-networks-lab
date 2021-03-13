@@ -77,15 +77,14 @@ int main(int argc, char **argv){
         int temp_time = 0;
 
         // Send frame instructions
-        send_frame:
             printf("%s\n", send.data);
             fprintf(fptr, "%s\n", send.data);
+            sendto(sockfd, &send, sizeof(send), 0, (struct sockaddr*)&receiver, sizeof(receiver));
+        send_frame:
             start = clock();
             if(resend == 1){
-                start = temp_time;
-                tv.tv_sec = RetransmissionTime - start;
+                tv.tv_sec = RetransmissionTime - temp_time;
             }
-            sendto(sockfd, &send, sizeof(send), 0, (struct sockaddr*)&receiver, sizeof(receiver));
             setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO,(struct timeval *)&tv,sizeof(struct timeval));
             int rec_size = recvfrom(sockfd, &rec, sizeof(rec), 0, (struct sockaddr*)&receiver, &size_rec);
             end = clock() - start + temp_time;
