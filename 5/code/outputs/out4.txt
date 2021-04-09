@@ -1,0 +1,353 @@
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.415s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 3971
+  Tx Bytes:   8847388
+  TxOffered:  10.1113 Mbps
+  Rx Packets: 3567
+  Rx Bytes:   7947276
+  Throughput: 9.0826 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 3965
+  Tx Bytes:   8834020
+  TxOffered:  10.096 Mbps
+  Rx Packets: 3965
+  Rx Bytes:   8834020
+  Throughput: 10.096 Mbps
+Total channel throughput = 19.1786
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 3971
+  Tx Bytes:   8847388
+  TxOffered:  10.1113 Mbps
+  Rx Packets: 3158
+  Rx Bytes:   7036024
+  Throughput: 8.04117 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 3965
+  Tx Bytes:   8834020
+  TxOffered:  10.096 Mbps
+  Rx Packets: 3965
+  Rx Bytes:   8834020
+  Throughput: 10.096 Mbps
+Total channel throughput = 18.1372
+
+
+
+
+//// loopWaf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1958/2008] Compiling scratch/4.cc
+[1968/2008] Linking build/scratch/4
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.662s)
+2.700000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 1072
+  Tx Bytes:   2388416
+  TxOffered:  2.72962 Mbps
+  Rx Packets: 1072
+  Rx Bytes:   2388416
+  Throughput: 2.72962 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 1070
+  Tx Bytes:   2383960
+  TxOffered:  2.72453 Mbps
+  Rx Packets: 1070
+  Rx Bytes:   2383960
+  Throughput: 2.72453 Mbps
+Total channel throughput = 5.45414
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 1072
+  Tx Bytes:   2388416
+  TxOffered:  2.72962 Mbps
+  Rx Packets: 1072
+  Rx Bytes:   2388416
+  Throughput: 2.72962 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 1070
+  Tx Bytes:   2383960
+  TxOffered:  2.72453 Mbps
+  Rx Packets: 1070
+  Rx Bytes:   2383960
+  Throughput: 2.72453 Mbps
+Total channel throughput = 5.45414
+5.400000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 2144
+  Tx Bytes:   4776832
+  TxOffered:  5.45924 Mbps
+  Rx Packets: 2144
+  Rx Bytes:   4776832
+  Throughput: 5.45924 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 2141
+  Tx Bytes:   4770148
+  TxOffered:  5.4516 Mbps
+  Rx Packets: 2141
+  Rx Bytes:   4770148
+  Throughput: 5.4516 Mbps
+Total channel throughput = 10.9108
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 2144
+  Tx Bytes:   4776832
+  TxOffered:  5.45924 Mbps
+  Rx Packets: 2144
+  Rx Bytes:   4776832
+  Throughput: 5.45924 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 2141
+  Tx Bytes:   4770148
+  TxOffered:  5.4516 Mbps
+  Rx Packets: 2141
+  Rx Bytes:   4770148
+  Throughput: 5.4516 Mbps
+Total channel throughput = 10.9108
+8.100000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 3216
+  Tx Bytes:   7165248
+  TxOffered:  8.18885 Mbps
+  Rx Packets: 3216
+  Rx Bytes:   7165248
+  Throughput: 8.18885 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 3212
+  Tx Bytes:   7156336
+  TxOffered:  8.17867 Mbps
+  Rx Packets: 3212
+  Rx Bytes:   7156336
+  Throughput: 8.17867 Mbps
+Total channel throughput = 16.3675
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 3216
+  Tx Bytes:   7165248
+  TxOffered:  8.18885 Mbps
+  Rx Packets: 3216
+  Rx Bytes:   7165248
+  Throughput: 8.18885 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 3212
+  Tx Bytes:   7156336
+  TxOffered:  8.17867 Mbps
+  Rx Packets: 3212
+  Rx Bytes:   7156336
+  Throughput: 8.17867 Mbps
+Total channel throughput = 16.3675
+10.800000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 4289
+  Tx Bytes:   9555892
+  TxOffered:  10.921 Mbps
+  Rx Packets: 2733
+  Rx Bytes:   6089124
+  Throughput: 6.959 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 4283
+  Tx Bytes:   9542524
+  TxOffered:  10.9057 Mbps
+  Rx Packets: 4282
+  Rx Bytes:   9540296
+  Throughput: 10.9032 Mbps
+Total channel throughput = 17.8622
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 4289
+  Tx Bytes:   9555892
+  TxOffered:  10.921 Mbps
+  Rx Packets: 2799
+  Rx Bytes:   6236172
+  Throughput: 7.12705 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 4283
+  Tx Bytes:   9542524
+  TxOffered:  10.9057 Mbps
+  Rx Packets: 4282
+  Rx Bytes:   9540296
+  Throughput: 10.9032 Mbps
+Total channel throughput = 18.0302
+13.500000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 5361
+  Tx Bytes:   11944308
+  TxOffered:  13.6506 Mbps
+  Rx Packets: 1209
+  Rx Bytes:   2693652
+  Throughput: 3.07846 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 5353
+  Tx Bytes:   11926484
+  TxOffered:  13.6303 Mbps
+  Rx Packets: 5353
+  Rx Bytes:   11926484
+  Throughput: 13.6303 Mbps
+Total channel throughput = 16.7087
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 5361
+  Tx Bytes:   11944308
+  TxOffered:  13.6506 Mbps
+  Rx Packets: 1423
+  Rx Bytes:   3170444
+  Throughput: 3.62336 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 5353
+  Tx Bytes:   11926484
+  TxOffered:  13.6303 Mbps
+  Rx Packets: 5353
+  Rx Bytes:   11926484
+  Throughput: 13.6303 Mbps
+Total channel throughput = 17.2536
+16.200000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 6433
+  Tx Bytes:   14332724
+  TxOffered:  16.3803 Mbps
+  Rx Packets: 476
+  Rx Bytes:   1060528
+  Throughput: 1.21203 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 6424
+  Tx Bytes:   14312672
+  TxOffered:  16.3573 Mbps
+  Rx Packets: 6424
+  Rx Bytes:   14312672
+  Throughput: 16.3573 Mbps
+Total channel throughput = 17.5694
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 6433
+  Tx Bytes:   14332724
+  TxOffered:  16.3803 Mbps
+  Rx Packets: 607
+  Rx Bytes:   1352396
+  Throughput: 1.5456 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 6424
+  Tx Bytes:   14312672
+  TxOffered:  16.3573 Mbps
+  Rx Packets: 6424
+  Rx Bytes:   14312672
+  Throughput: 16.3573 Mbps
+Total channel throughput = 17.9029
+18.900000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 7506
+  Tx Bytes:   16723368
+  TxOffered:  19.1124 Mbps
+  Rx Packets: 61
+  Rx Bytes:   135908
+  Throughput: 0.155323 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 7495
+  Tx Bytes:   16698860
+  TxOffered:  19.0844 Mbps
+  Rx Packets: 7495
+  Rx Bytes:   16698860
+  Throughput: 19.0844 Mbps
+Total channel throughput = 19.2397
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 7506
+  Tx Bytes:   16723368
+  TxOffered:  19.1124 Mbps
+  Rx Packets: 262
+  Rx Bytes:   583736
+  Throughput: 0.667127 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 7495
+  Tx Bytes:   16698860
+  TxOffered:  19.0844 Mbps
+  Rx Packets: 7495
+  Rx Bytes:   16698860
+  Throughput: 19.0844 Mbps
+Total channel throughput = 19.7515
+21.600000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 8578
+  Tx Bytes:   19111784
+  TxOffered:  21.842 Mbps
+  Rx Packets: 12
+  Rx Bytes:   26736
+  Throughput: 0.0305554 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 8566
+  Tx Bytes:   19085048
+  TxOffered:  21.8115 Mbps
+  Rx Packets: 8565
+  Rx Bytes:   19082820
+  Throughput: 21.8089 Mbps
+Total channel throughput = 21.8395
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 8578
+  Tx Bytes:   19111784
+  TxOffered:  21.842 Mbps
+  Rx Packets: 79
+  Rx Bytes:   176012
+  Throughput: 0.201157 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 8566
+  Tx Bytes:   19085048
+  TxOffered:  21.8115 Mbps
+  Rx Packets: 8565
+  Rx Bytes:   19082820
+  Throughput: 21.8089 Mbps
+Total channel throughput = 22.0101
+24.300000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 9650
+  Tx Bytes:   21500200
+  TxOffered:  24.5717 Mbps
+  Rx Packets: 14
+  Rx Bytes:   31192
+  Throughput: 0.035648 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 9637
+  Tx Bytes:   21471236
+  TxOffered:  24.5386 Mbps
+  Rx Packets: 9636
+  Rx Bytes:   21469008
+  Throughput: 24.536 Mbps
+Total channel throughput = 24.5717
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.1 -> 10.0.0.2)
+  Tx Packets: 9650
+  Tx Bytes:   21500200
+  TxOffered:  24.5717 Mbps
+  Rx Packets: 23
+  Rx Bytes:   51244
+  Throughput: 0.0585646 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.4)
+  Tx Packets: 9637
+  Tx Bytes:   21471236
+  TxOffered:  24.5386 Mbps
+  Rx Packets: 8806
+  Rx Bytes:   19619768
+  Throughput: 22.4226 Mbps
+Total channel throughput = 22.4812

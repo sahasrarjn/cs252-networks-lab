@@ -1,0 +1,632 @@
+// No change
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 3971
+  Tx Bytes:   8847388
+  TxOffered:  10.1113 Mbps
+  Rx Packets: 3815
+  Rx Bytes:   8499820
+  Throughput: 9.71408 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 3965
+  Tx Bytes:   8834020
+  TxOffered:  10.096 Mbps
+  Rx Packets: 3683
+  Rx Bytes:   8205724
+  Throughput: 9.37797 Mbps
+Total channel throughput = 19.0921
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 3971
+  Tx Bytes:   8847388
+  TxOffered:  10.1113 Mbps
+  Rx Packets: 3971
+  Rx Bytes:   8847388
+  Throughput: 10.1113 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 3965
+  Tx Bytes:   8834020
+  TxOffered:  10.096 Mbps
+  Rx Packets: 3965
+  Rx Bytes:   8834020
+  Throughput: 10.096 Mbps
+Total channel throughput = 20.2073
+
+// 2.7
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 1072
+  Tx Bytes:   2388416
+  TxOffered:  2.72962 Mbps
+  Rx Packets: 1072
+  Rx Bytes:   2388416
+  Throughput: 2.72962 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 1070
+  Tx Bytes:   2383960
+  TxOffered:  2.72453 Mbps
+  Rx Packets: 1070
+  Rx Bytes:   2383960
+  Throughput: 2.72453 Mbps
+Total channel throughput = 5.45414
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 1072
+  Tx Bytes:   2388416
+  TxOffered:  2.72962 Mbps
+  Rx Packets: 1072
+  Rx Bytes:   2388416
+  Throughput: 2.72962 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 1070
+  Tx Bytes:   2383960
+  TxOffered:  2.72453 Mbps
+  Rx Packets: 1070
+  Rx Bytes:   2383960
+  Throughput: 2.72453 Mbps
+Total channel throughput = 5.45414
+
+
+// 5.4
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1957/2008] Compiling scratch/1.cc
+[1968/2008] Linking build/scratch/1
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.727s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 2144
+  Tx Bytes:   4776832
+  TxOffered:  5.45924 Mbps
+  Rx Packets: 2130
+  Rx Bytes:   4745640
+  Throughput: 5.42359 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 2141
+  Tx Bytes:   4770148
+  TxOffered:  5.4516 Mbps
+  Rx Packets: 2125
+  Rx Bytes:   4734500
+  Throughput: 5.41086 Mbps
+Total channel throughput = 10.8344
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 2144
+  Tx Bytes:   4776832
+  TxOffered:  5.45924 Mbps
+  Rx Packets: 2144
+  Rx Bytes:   4776832
+  Throughput: 5.45924 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 2141
+  Tx Bytes:   4770148
+  TxOffered:  5.4516 Mbps
+  Rx Packets: 2141
+  Rx Bytes:   4770148
+  Throughput: 5.4516 Mbps
+Total channel throughput = 10.9108
+
+
+// 8.1
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1959/2008] Compiling scratch/1.cc
+[1968/2008] Linking build/scratch/1
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.707s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 3216
+  Tx Bytes:   7165248
+  TxOffered:  8.18885 Mbps
+  Rx Packets: 3216
+  Rx Bytes:   7165248
+  Throughput: 8.18885 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 3212
+  Tx Bytes:   7156336
+  TxOffered:  8.17867 Mbps
+  Rx Packets: 3212
+  Rx Bytes:   7156336
+  Throughput: 8.17867 Mbps
+Total channel throughput = 16.3675
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 3216
+  Tx Bytes:   7165248
+  TxOffered:  8.18885 Mbps
+  Rx Packets: 3216
+  Rx Bytes:   7165248
+  Throughput: 8.18885 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 3212
+  Tx Bytes:   7156336
+  TxOffered:  8.17867 Mbps
+  Rx Packets: 3212
+  Rx Bytes:   7156336
+  Throughput: 8.17867 Mbps
+Total channel throughput = 16.3675
+
+
+// 10.8
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1958/2008] Compiling scratch/1.cc
+[1968/2008] Linking build/scratch/1
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.623s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 4289
+  Tx Bytes:   9555892
+  TxOffered:  10.921 Mbps
+  Rx Packets: 3948
+  Rx Bytes:   8796144
+  Throughput: 10.0527 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 4283
+  Tx Bytes:   9542524
+  TxOffered:  10.9057 Mbps
+  Rx Packets: 3770
+  Rx Bytes:   8399560
+  Throughput: 9.5995 Mbps
+Total channel throughput = 19.6522
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 4289
+  Tx Bytes:   9555892
+  TxOffered:  10.921 Mbps
+  Rx Packets: 4281
+  Rx Bytes:   9538068
+  Throughput: 10.9006 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 4283
+  Tx Bytes:   9542524
+  TxOffered:  10.9057 Mbps
+  Rx Packets: 4155
+  Rx Bytes:   9257340
+  Throughput: 10.5798 Mbps
+Total channel throughput = 21.4805
+
+
+// 13.5
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1957/2008] Compiling scratch/1.cc
+[1968/2008] Linking build/scratch/1
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.687s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 5361
+  Tx Bytes:   11944308
+  TxOffered:  13.6506 Mbps
+  Rx Packets: 3828
+  Rx Bytes:   8528784
+  Throughput: 9.74718 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 5353
+  Tx Bytes:   11926484
+  TxOffered:  13.6303 Mbps
+  Rx Packets: 3973
+  Rx Bytes:   8851844
+  Throughput: 10.1164 Mbps
+Total channel throughput = 19.8636
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 5361
+  Tx Bytes:   11944308
+  TxOffered:  13.6506 Mbps
+  Rx Packets: 4417
+  Rx Bytes:   9841076
+  Throughput: 11.2469 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 5353
+  Tx Bytes:   11926484
+  TxOffered:  13.6303 Mbps
+  Rx Packets: 4241
+  Rx Bytes:   9448948
+  Throughput: 10.7988 Mbps
+Total channel throughput = 22.0457
+
+
+// 16.2
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1960/2008] Compiling scratch/1.cc
+[1968/2008] Linking build/scratch/1
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.700s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 6433
+  Tx Bytes:   14332724
+  TxOffered:  16.3803 Mbps
+  Rx Packets: 3925
+  Rx Bytes:   8744900
+  Throughput: 9.99417 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 6424
+  Tx Bytes:   14312672
+  TxOffered:  16.3573 Mbps
+  Rx Packets: 3886
+  Rx Bytes:   8658008
+  Throughput: 9.89487 Mbps
+Total channel throughput = 19.889
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 6433
+  Tx Bytes:   14332724
+  TxOffered:  16.3803 Mbps
+  Rx Packets: 4101
+  Rx Bytes:   9137028
+  Throughput: 10.4423 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 6424
+  Tx Bytes:   14312672
+  TxOffered:  16.3573 Mbps
+  Rx Packets: 4577
+  Rx Bytes:   10197556
+  Throughput: 11.6543 Mbps
+Total channel throughput = 22.0967
+
+
+// 18.9
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1957/2008] Compiling scratch/1.cc
+[1968/2008] Linking build/scratch/1
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.619s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 7506
+  Tx Bytes:   16723368
+  TxOffered:  19.1124 Mbps
+  Rx Packets: 3910
+  Rx Bytes:   8711480
+  Throughput: 9.95598 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 7495
+  Tx Bytes:   16698860
+  TxOffered:  19.0844 Mbps
+  Rx Packets: 3879
+  Rx Bytes:   8642412
+  Throughput: 9.87704 Mbps
+Total channel throughput = 19.833
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 7506
+  Tx Bytes:   16723368
+  TxOffered:  19.1124 Mbps
+  Rx Packets: 4230
+  Rx Bytes:   9424440
+  Throughput: 10.7708 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 7495
+  Tx Bytes:   16698860
+  TxOffered:  19.0844 Mbps
+  Rx Packets: 4467
+  Rx Bytes:   9952476
+  Throughput: 11.3743 Mbps
+Total channel throughput = 22.145
+
+
+// 21.6
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1957/2008] Compiling scratch/1.cc
+[1968/2008] Linking build/scratch/1
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.879s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 8578
+  Tx Bytes:   19111784
+  TxOffered:  21.842 Mbps
+  Rx Packets: 3952
+  Rx Bytes:   8805056
+  Throughput: 10.0629 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 8566
+  Tx Bytes:   19085048
+  TxOffered:  21.8115 Mbps
+  Rx Packets: 3906
+  Rx Bytes:   8702568
+  Throughput: 9.94579 Mbps
+Total channel throughput = 20.0087
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 8578
+  Tx Bytes:   19111784
+  TxOffered:  21.842 Mbps
+  Rx Packets: 3754
+  Rx Bytes:   8363912
+  Throughput: 9.55876 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 8566
+  Tx Bytes:   19085048
+  TxOffered:  21.8115 Mbps
+  Rx Packets: 4985
+  Rx Bytes:   11106580
+  Throughput: 12.6932 Mbps
+Total channel throughput = 22.252
+
+
+
+
+//24.3
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1957/2008] Compiling scratch/1.cc
+[1968/2008] Linking build/scratch/1
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.895s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 9650
+  Tx Bytes:   21500200
+  TxOffered:  24.5717 Mbps
+  Rx Packets: 4059
+  Rx Bytes:   9043452
+  Throughput: 10.3354 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 9637
+  Tx Bytes:   21471236
+  TxOffered:  24.5386 Mbps
+  Rx Packets: 3815
+  Rx Bytes:   8499820
+  Throughput: 9.71408 Mbps
+Total channel throughput = 20.0495
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 1 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 9650
+  Tx Bytes:   21500200
+  TxOffered:  24.5717 Mbps
+  Rx Packets: 4995
+  Rx Bytes:   11128860
+  Throughput: 12.7187 Mbps
+Flow 2 (10.0.0.3 -> 10.0.0.1)
+  Tx Packets: 9637
+  Tx Bytes:   21471236
+  TxOffered:  24.5386 Mbps
+  Rx Packets: 3741
+  Rx Bytes:   8334948
+  Throughput: 9.52565 Mbps
+Total channel throughput = 22.2444
+
+
+
+
+
+
+// single source
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.414s)
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 3971
+  Tx Bytes:   8847388
+  TxOffered:  10.1113 Mbps
+  Rx Packets: 3971
+  Rx Bytes:   8847388
+  Throughput: 10.1113 Mbps
+Total channel throughput = 10.1113
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 3971
+  Tx Bytes:   8847388
+  TxOffered:  10.1113 Mbps
+  Rx Packets: 3971
+  Rx Bytes:   8847388
+  Throughput: 10.1113 Mbps
+Total channel throughput = 10.1113
+
+
+
+
+///////
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1952/2008] Compiling scratch/3.cc
+[1956/2008] Compiling scratch/1.cc
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Waf: Entering directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+[1950/2008] Linking build/scratch/3
+[1960/2008] Compiling scratch/1.cc
+[1968/2008] Linking build/scratch/1
+Waf: Leaving directory `/home/utkarsh/sahasra/ns-allinone-3.30/ns-3.30/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.718s)
+2.700000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 1072
+  Tx Bytes:   2388416
+  TxOffered:  2.72962 Mbps
+  Rx Packets: 1072
+  Rx Bytes:   2388416
+  Throughput: 2.72962 Mbps
+Total channel throughput = 2.72962
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 1072
+  Tx Bytes:   2388416
+  TxOffered:  2.72962 Mbps
+  Rx Packets: 1072
+  Rx Bytes:   2388416
+  Throughput: 2.72962 Mbps
+Total channel throughput = 2.72962
+5.400000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 2144
+  Tx Bytes:   4776832
+  TxOffered:  5.45924 Mbps
+  Rx Packets: 2144
+  Rx Bytes:   4776832
+  Throughput: 5.45924 Mbps
+Total channel throughput = 5.45924
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 2144
+  Tx Bytes:   4776832
+  TxOffered:  5.45924 Mbps
+  Rx Packets: 2144
+  Rx Bytes:   4776832
+  Throughput: 5.45924 Mbps
+Total channel throughput = 5.45924
+8.100000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 3216
+  Tx Bytes:   7165248
+  TxOffered:  8.18885 Mbps
+  Rx Packets: 3216
+  Rx Bytes:   7165248
+  Throughput: 8.18885 Mbps
+Total channel throughput = 8.18885
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 3216
+  Tx Bytes:   7165248
+  TxOffered:  8.18885 Mbps
+  Rx Packets: 3216
+  Rx Bytes:   7165248
+  Throughput: 8.18885 Mbps
+Total channel throughput = 8.18885
+10.800000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 4289
+  Tx Bytes:   9555892
+  TxOffered:  10.921 Mbps
+  Rx Packets: 4289
+  Rx Bytes:   9555892
+  Throughput: 10.921 Mbps
+Total channel throughput = 10.921
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 4289
+  Tx Bytes:   9555892
+  TxOffered:  10.921 Mbps
+  Rx Packets: 4289
+  Rx Bytes:   9555892
+  Throughput: 10.921 Mbps
+Total channel throughput = 10.921
+13.500000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 5361
+  Tx Bytes:   11944308
+  TxOffered:  13.6506 Mbps
+  Rx Packets: 5361
+  Rx Bytes:   11944308
+  Throughput: 13.6506 Mbps
+Total channel throughput = 13.6506
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 5361
+  Tx Bytes:   11944308
+  TxOffered:  13.6506 Mbps
+  Rx Packets: 5361
+  Rx Bytes:   11944308
+  Throughput: 13.6506 Mbps
+Total channel throughput = 13.6506
+16.200000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 6433
+  Tx Bytes:   14332724
+  TxOffered:  16.3803 Mbps
+  Rx Packets: 6433
+  Rx Bytes:   14332724
+  Throughput: 16.3803 Mbps
+Total channel throughput = 16.3803
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 6433
+  Tx Bytes:   14332724
+  TxOffered:  16.3803 Mbps
+  Rx Packets: 6433
+  Rx Bytes:   14332724
+  Throughput: 16.3803 Mbps
+Total channel throughput = 16.3803
+18.900000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 7506
+  Tx Bytes:   16723368
+  TxOffered:  19.1124 Mbps
+  Rx Packets: 7505
+  Rx Bytes:   16721140
+  Throughput: 19.1099 Mbps
+Total channel throughput = 19.1099
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 7506
+  Tx Bytes:   16723368
+  TxOffered:  19.1124 Mbps
+  Rx Packets: 7505
+  Rx Bytes:   16721140
+  Throughput: 19.1099 Mbps
+Total channel throughput = 19.1099
+21.600000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 8578
+  Tx Bytes:   19111784
+  TxOffered:  21.842 Mbps
+  Rx Packets: 8578
+  Rx Bytes:   19111784
+  Throughput: 21.842 Mbps
+Total channel throughput = 21.842
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 8578
+  Tx Bytes:   19111784
+  TxOffered:  21.842 Mbps
+  Rx Packets: 8578
+  Rx Bytes:   19111784
+  Throughput: 21.842 Mbps
+Total channel throughput = 21.842
+24.300000Mbps
+Hidden station experiment with RTS/CTS disabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 9650
+  Tx Bytes:   21500200
+  TxOffered:  24.5717 Mbps
+  Rx Packets: 9650
+  Rx Bytes:   21500200
+  Throughput: 24.5717 Mbps
+Total channel throughput = 24.5717
+------------------------------------------------
+Hidden station experiment with RTS/CTS enabled:
+Flow 0 (10.0.0.2 -> 10.0.0.1)
+  Tx Packets: 9650
+  Tx Bytes:   21500200
+  TxOffered:  24.5717 Mbps
+  Rx Packets: 8882
+  Rx Bytes:   19789096
+  Throughput: 22.6161 Mbps
+Total channel throughput = 22.6161
