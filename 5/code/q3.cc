@@ -99,6 +99,12 @@ void experiment (bool enableCtsRts, std::string wifiManager, std::string dr)
     lossModel->SetLoss (nodes.Get (4)->GetObject<MobilityModel> (), nodes.Get (5)->GetObject<MobilityModel> (), 50);  // C1-C2
     lossModel->SetLoss (nodes.Get (2)->GetObject<MobilityModel> (), nodes.Get (4)->GetObject<MobilityModel> (), 50);  // B1-C1
     lossModel->SetLoss (nodes.Get (3)->GetObject<MobilityModel> (), nodes.Get (5)->GetObject<MobilityModel> (), 50);  // B2-C2
+
+
+    lossModel->SetLoss (nodes.Get (0)->GetObject<MobilityModel> (), nodes.Get (3)->GetObject<MobilityModel> (), 50);  // A1-B2
+    lossModel->SetLoss (nodes.Get (2)->GetObject<MobilityModel> (), nodes.Get (1)->GetObject<MobilityModel> (), 50);  // A2-B1
+    lossModel->SetLoss (nodes.Get (4)->GetObject<MobilityModel> (), nodes.Get (3)->GetObject<MobilityModel> (), 50);  // C1-B2
+    lossModel->SetLoss (nodes.Get (5)->GetObject<MobilityModel> (), nodes.Get (2)->GetObject<MobilityModel> (), 50);  // C2-B1
   
   // Create a YansWifiChannel type object in the variable called "wifiChannel"
   // Yans stands for Yet Another Network Simulator

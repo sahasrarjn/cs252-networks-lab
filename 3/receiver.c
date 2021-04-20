@@ -75,7 +75,7 @@ int main(int argc, char *argv[]){
 		}
 
 		// Check the received data
-		if (rec_size > 0- && rec.ack == 0){
+		if (rec_size > 0 && rec.ack == 0){
 			if(seqNo == rec.seqNo){
 				// printf("%s\n", rec.data);
 				// fprintf(fptr, "%s\n", rec.data);
