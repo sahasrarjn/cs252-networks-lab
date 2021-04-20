@@ -19,10 +19,13 @@ main()
   char buf[MAX_LINE];
   char *file_path = "recv.txt";
   int buf_len, addr_len;
-  int s, new_s;
+  int sock, new_sock;
   int fp;
   ssize_t bytes_read;
 
+  int reno_cubic = 0; // Change this to automate!!!! 1:reno, 0:cubic
+  char tcp_type[MAX_LINE];
+  socklen_t len;
 
   /* build address data structure */
   bzero((char *)&sin, sizeof(sin));
@@ -31,19 +34,34 @@ main()
   sin.sin_port = htons(SERVER_PORT);
 
   /* setup passive open */
-  if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
+  if ((sock = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
     perror("simplex-talk: socket");
     exit(1);
   }
-  if ((bind(s, (struct sockaddr *)&sin, sizeof(sin))) < 0) {
+  if ((bind(sock, (struct sockaddr *)&sin, sizeof(sin))) < 0) {
     perror("simplex-talk: bind");
     exit(1);
   }
-  listen(s, MAX_PENDING);
+  listen(sock, MAX_PENDING);
+
+
+  // select tcp
+  if(reno_cubic == 1){
+    strcpy(tcp_type, "reno");
+  }else{
+    strcpy(tcp_type, "cubic");
+  }
+  len = strlen(buf);
+
+  if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0){
+    perror("setsockopt");
+    return -1;
+  }
+
 
  /* wait for connection, then receive and print text */
   while(1) {
-    if ((new_s = accept(s, (struct sockaddr *)&sin, &addr_len)) < 0) {
+    if ((new_sock = accept(sock, (struct sockaddr *)&sin, &addr_len)) < 0) {
       perror("simplex-talk: accept");
       exit(1);
     }
@@ -57,7 +75,7 @@ main()
     }
 
     do {
-      bytes_read = read(new_s, buf, MAX_LINE); // check if sizeof(buf) works
+      bytes_read = read(new_sock, buf, MAX_LINE); // check if sizeof(buf) works
       if(bytes_read == 1){
         perror("simplex-talk: read");
         exit(1);
@@ -70,9 +88,9 @@ main()
     } while(bytes_read > 0);
 
     close(fp);
-    // while ((buf_len = recv(new_s, buf, sizeof(buf), 0)))
+    // while ((buf_len = recv(new_sock, buf, sizeof(buf), 0)))
     //   fputs(buf, stdout);
-    close(new_s);
+    close(new_sock);
   }
   return 0;
 }
