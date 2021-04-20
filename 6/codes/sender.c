@@ -19,8 +19,15 @@ main(int argc, char * argv[])
   struct sockaddr_in sin;
   char *host;
   char buf[MAX_LINE];
-  int s;
+  int s; // sockfd
   int len;
+
+  // open file
+  fp = open("send.txt", O_RDONLY);
+  if(fp == -1){
+    perror("sinplex-talk: file-open")
+    exit(1);
+  }
 
   if (argc==2) {
     host = argv[1];
@@ -54,10 +61,42 @@ main(int argc, char * argv[])
     close(s);
     exit(1);
   }
-  /* main loop: get and send lines of text */
-  while (fgets(buf, sizeof(buf), stdin)) {
-    buf[MAX_LINE-1] = '\0';
-    len = strlen(buf) + 1;
-    send(s, buf, len, 0);
+
+  while(1){
+    int bytes_read = read(fp, buf, sizeof(buf));
+    if(bytes_read == 0)
+      break;
+
+    if(bytes_read < 0){
+      printf("simlpex-talk: no bytes read\n");
+      exit(1);
+    }
+
+    void *p = buf;
+    printf("%s\n", p);
+
+    if (write(s, buf, bytes_read) == -1) {
+        perror("write");
+        exit(EXIT_FAILURE);
+    }
+
   }
+
+  free(host);
+  close(fp);
+  exit(EXIT_SUCCESS)
+  /* main loop: get and send lines of text */
+  // while (fgets(buf, sizeof(buf), fp)) {
+  //   buf[MAX_LINE-1] = '\0';
+  //   len = strlen(buf) + 1;
+  //   send(s, buf, len, 0);
+  // }
 }
+
+
+
+
+
+
+
+

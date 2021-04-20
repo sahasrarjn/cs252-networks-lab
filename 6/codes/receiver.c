@@ -17,8 +17,11 @@ main()
 {
   struct sockaddr_in sin;
   char buf[MAX_LINE];
+  char *file_path = "recv.txt";
   int buf_len, addr_len;
   int s, new_s;
+  ssize_t bytes_read;
+
 
   /* build address data structure */
   bzero((char *)&sin, sizeof(sin));
@@ -43,9 +46,40 @@ main()
       perror("simplex-talk: accept");
       exit(1);
     }
-    while ((buf_len = recv(new_s, buf, sizeof(buf), 0)))
-      fputs(buf, stdout);
+
+    fp = open(file_path, 
+                  O_WRONLY | O_CREAT | O_TRUNC, 
+                  S_IRUSR | S_IWUSR);
+    if(fp == -1){
+      perror("simplex-talk: file-open");
+      exit(1);
+    }
+
+    do {
+      bytes_read = read(new_s, buf, MAX_LINE); // check if sizeof(buf) works
+      if(bytes_read == 1){
+        perror("simplex-talk: read")
+        exit(1);
+      }
+
+      if(write(fp, buf, bytes_read) == -1){
+        perror("simplex-talk: write");
+        exit(1);
+      }
+    } while(bytes_read > 0)
+
+    close(fp);
+    // while ((buf_len = recv(new_s, buf, sizeof(buf), 0)))
+    //   fputs(buf, stdout);
     close(new_s);
   }
+  return 0;
 }
+
+
+
+
+
+
+
 
