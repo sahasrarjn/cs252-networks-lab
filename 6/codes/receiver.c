@@ -20,6 +20,7 @@ main()
   char *file_path = "recv.txt";
   int buf_len, addr_len;
   int s, new_s;
+  int fp;
   ssize_t bytes_read;
 
 
@@ -58,7 +59,7 @@ main()
     do {
       bytes_read = read(new_s, buf, MAX_LINE); // check if sizeof(buf) works
       if(bytes_read == 1){
-        perror("simplex-talk: read")
+        perror("simplex-talk: read");
         exit(1);
       }
 
@@ -66,7 +67,7 @@ main()
         perror("simplex-talk: write");
         exit(1);
       }
-    } while(bytes_read > 0)
+    } while(bytes_read > 0);
 
     close(fp);
     // while ((buf_len = recv(new_s, buf, sizeof(buf), 0)))

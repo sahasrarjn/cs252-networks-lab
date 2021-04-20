@@ -14,7 +14,7 @@
 int
 main(int argc, char * argv[])
 {
-  FILE *fp;
+  int fp;
   struct hostent *hp;
   struct sockaddr_in sin;
   char *host;
@@ -25,7 +25,7 @@ main(int argc, char * argv[])
   // open file
   fp = open("send.txt", O_RDONLY);
   if(fp == -1){
-    perror("sinplex-talk: file-open")
+    perror("sinplex-talk: file-open");
     exit(1);
   }
 
@@ -84,7 +84,7 @@ main(int argc, char * argv[])
 
   free(host);
   close(fp);
-  exit(EXIT_SUCCESS)
+  exit(EXIT_SUCCESS);
   /* main loop: get and send lines of text */
   // while (fgets(buf, sizeof(buf), fp)) {
   //   buf[MAX_LINE-1] = '\0';
