@@ -72,8 +72,7 @@ main(int argc, char * argv[])
       exit(1);
     }
 
-    void *p = buf;
-    printf("%s\n", p);
+    printf("Data sent:\n%s\n", buf);
 
     if (write(s, buf, bytes_read) == -1) {
         perror("write");
@@ -82,7 +81,7 @@ main(int argc, char * argv[])
 
   }
 
-  free(host);
+  // free(host);
   close(fp);
   exit(EXIT_SUCCESS);
   /* main loop: get and send lines of text */
