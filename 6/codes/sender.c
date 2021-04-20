@@ -6,11 +6,12 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <sys/time.h>
 #include <netinet/tcp.h>
 #include <netdb.h>
 
 #define SERVER_PORT 5432
-#define MAX_LINE 256
+#define MAX_LINE 256    // Check this for large files
 
 int
 main(int argc, char * argv[])
@@ -25,6 +26,8 @@ main(int argc, char * argv[])
   int reno_cubic = 0; // Change this to automate!!!! 1:reno, 0:cubic
   char tcp_type[MAX_LINE];
   socklen_t len;
+
+  struct timeval t0, t1;
   
   int sock; // sockfd
   int len;
@@ -84,6 +87,7 @@ main(int argc, char * argv[])
     exit(1);
   }
 
+
   while(1){
     int bytes_read = read(fp, buf, sizeof(buf));
     if(bytes_read == 0)
@@ -96,22 +100,20 @@ main(int argc, char * argv[])
 
     printf("Data sent:\n%s\n", buf);
 
+    gettimeofday(&t0,NULL);
     if (write(sock, buf, bytes_read) == -1) {
         perror("write");
         exit(EXIT_FAILURE);
     }
+    gettimeofday(&t1,NULL);
+
+    printf("Time taken to transfer the file: %d sec\n", t1.sec-t0.sec);
 
   }
 
   // free(host);
   close(fp);
   exit(EXIT_SUCCESS);
-  /* main loop: get and send lines of text */
-  // while (fgets(buf, sizeof(buf), fp)) {
-  //   buf[MAX_LINE-1] = '\0';
-  //   len = strlen(buf) + 1;
-  //   send(s, buf, len, 0);
-  // }
 }
 
 

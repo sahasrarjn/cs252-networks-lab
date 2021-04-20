@@ -23,7 +23,7 @@ main()
   int fp;
   ssize_t bytes_read;
 
-  int reno_cubic = 0; // Change this to automate!!!! 1:reno, 0:cubic
+  int reno_cubic = 0; // Change this to automate!!!! 1:reno, 0:cubic (No need to change for receiver :P)
   char tcp_type[MAX_LINE];
   socklen_t len;
 
