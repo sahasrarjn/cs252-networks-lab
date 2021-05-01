@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <netinet/tcp.h>
 #include <fcntl.h> // for open
 #include <unistd.h> // for close
 

@@ -25,7 +25,6 @@ main(int argc, char * argv[])
 
   int reno_cubic = 0; // Change this to automate!!!! 1:reno, 0:cubic
   char tcp_type[MAX_LINE];
-  socklen_t len;
 
   struct timeval t0, t1;
   
@@ -98,7 +97,6 @@ main(int argc, char * argv[])
       exit(1);
     }
 
-    printf("Data sent:\n%s\n", buf);
 
     gettimeofday(&t0,NULL);
     if (write(sock, buf, bytes_read) == -1) {
@@ -107,7 +105,7 @@ main(int argc, char * argv[])
     }
     gettimeofday(&t1,NULL);
 
-    printf("Time taken to transfer the file: %d sec\n", t1.sec-t0.sec);
+    printf("Time taken to transfer the file: %ld sec\n", t1.tv_sec-t0.tv_sec);
 
   }
 
