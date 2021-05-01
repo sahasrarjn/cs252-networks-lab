@@ -35,12 +35,12 @@ for (( i = 0; i < 3; i++ )); do
 			isReno=$k
 			for (( run = 0; run < 20; run++ )); do
 
-				# ./receiver $isReno &
-				cat > temp2 &
+				./receiver $isReno &
+				# cat > temp2 &
 				P1=$!
 
-				# ./sender 0.0.0.0 $isReno & # ectract sender time from here
-				cat temp & 
+				./sender 0.0.0.0 $isReno & # ectract sender time from here
+				# cat temp & 
 				P2=$!
 
 				wait $P2 # Wait for sender to stop
