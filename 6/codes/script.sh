@@ -49,8 +49,8 @@ for (( i = 0; i < 3; i++ )); do
 
 				f1='send.txt'
 				f2='recv.txt'
-				f1='receiver.c'
-				f2='huh.c'
+				# f1='receiver.c'
+				# f2='huh.c'
 				if diff -q $f1 $f2 > /dev/null
 				then
 				  echo "The files are equal"
