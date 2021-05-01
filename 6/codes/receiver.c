@@ -24,7 +24,13 @@ main()
   int fp;
   ssize_t bytes_read;
 
-  int reno_cubic = 0; // Change this to automate!!!! 1:reno, 0:cubic (No need to change for receiver :P)
+  if(argc == 2){
+    int reno_cubic = argv[2]; // 1:reno, 0:cubic (No need to change for receiver :P)
+  }else{
+    fprintf(stderr, "usage: simplex-talk isReno\n");
+    exit(1);
+  }
+
   char tcp_type[MAX_LINE];
   socklen_t len;
 

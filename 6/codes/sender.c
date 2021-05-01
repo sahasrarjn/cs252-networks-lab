@@ -23,7 +23,6 @@ main(int argc, char * argv[])
   char *file_path = "send.txt";
   char buf[MAX_LINE];
 
-  int reno_cubic = 0; // Change this to automate!!!! 1:reno, 0:cubic
   char tcp_type[MAX_LINE];
 
   struct timeval t0, t1;
@@ -38,13 +37,16 @@ main(int argc, char * argv[])
     exit(1);
   }
 
-  if (argc==2) {
+  if (argc==3) {
     host = argv[1];
   }
   else {
-    fprintf(stderr, "usage: simplex-talk host\n");
+    fprintf(stderr, "usage: simplex-talk host isReno\n");
     exit(1);
   }
+
+  int reno_cubic = argv[2]; // Change this to automate!!!! 1:reno, 0:cubic
+
 
   /* translate host name into peer's IP address */
   hp = gethostbyname(host);
@@ -111,7 +113,7 @@ main(int argc, char * argv[])
   gettimeofday(&t1,NULL);
 
 
-  printf("Time taken to transfer the file: %ld micro sec\n", t1.tv_usec-t0.tv_usec);
+  printf("Time taken to transfer the file (in micro-seconds): \n%ld", t1.tv_usec-t0.tv_usec);
 
   // free(host);
   close(fp);
