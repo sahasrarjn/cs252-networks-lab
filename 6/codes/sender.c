@@ -29,7 +29,7 @@ main(int argc, char * argv[])
   struct timeval t0, t1;
   
   int sock; // sockfd
-  int len;
+  socklen_t len;
 
   // open file
   fp = open(file_path, O_RDONLY);
@@ -73,10 +73,11 @@ main(int argc, char * argv[])
   }
   len = strlen(buf);
 
-  if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0){
-    perror("setsockopt");
-    return -1;
-  }
+  setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len);
+  // if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0){
+  //   perror("setsockopt");
+  //   return -1;
+  // }
 
 
   if (connect(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
@@ -87,6 +88,8 @@ main(int argc, char * argv[])
   }
 
 
+
+  gettimeofday(&t0,NULL);
   while(1){
     int bytes_read = read(fp, buf, sizeof(buf));
     if(bytes_read == 0)
@@ -98,16 +101,17 @@ main(int argc, char * argv[])
     }
 
 
-    gettimeofday(&t0,NULL);
     if (write(sock, buf, bytes_read) == -1) {
         perror("write");
         exit(EXIT_FAILURE);
     }
-    gettimeofday(&t1,NULL);
 
-    printf("Time taken to transfer the file: %ld sec\n", t1.tv_sec-t0.tv_sec);
-
+    
   }
+  gettimeofday(&t1,NULL);
+
+
+  printf("Time taken to transfer the file: %ld micro sec\n", t1.tv_usec-t0.tv_usec);
 
   // free(host);
   close(fp);

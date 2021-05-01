@@ -54,10 +54,11 @@ main()
   }
   len = strlen(buf);
 
-  if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0){
-    perror("setsockopt");
-    return -1;
-  }
+  setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len);
+  // if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0){
+  //   perror("setsockopt");
+  //   return -1;
+  // }
 
 
  /* wait for connection, then receive and print text */
