@@ -22,14 +22,12 @@ main(int argc, char * argv[])
   char *file_path = "recv.txt";
   int buf_len, addr_len;
   int sock, new_sock;
-  int fp;
+  int fp, lenn;
   ssize_t bytes_read;
   int reno_cubic = 0;
   
-  if(argc == 2){
-    //reno_cubic = strtol(argv[2], NULL, 10); // 1:reno, 0:cubic (No need to change for receiver :P)
-  }else{
-    fprintf(stderr, "usage: simplex-talk isReno\n");
+  if(argc != 2){
+    fprintf(stderr, "usage: simplex-talk reno/cubic\n");
     exit(1);
   }
 
@@ -49,6 +47,7 @@ main(int argc, char * argv[])
     perror("simplex-talk: socket");
     exit(1);
   }
+  // bzero(&servaddr, sizeof(servaddr));
 
   int opt=1;
   if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
@@ -57,26 +56,41 @@ main(int argc, char * argv[])
       exit(EXIT_FAILURE);
   }
   
-  // select tcp
-  if(reno_cubic == 1){
-    strcpy(tcp_type, "reno");
-  }else{
-    strcpy(tcp_type, "cubic");
-  }
-  int len2 = strlen(tcp_type);
 
   
-  if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, tcp_type, len2) != 0){
-    perror("setsockopt");
-    return -1;
+  if(!strcmp(argv[1],"reno")){
+      strcpy(buf, "reno");      
   }
+  else if (!strcmp(argv[1],"cubic")){
+    strcpy(buf, "cubic");
+  }
+  lenn = strlen(buf);
+  if (setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, lenn)!=0)
+  {
+      perror("setsockopt");
+      exit(EXIT_FAILURE);
+  }
+
+  lenn = sizeof(buf);
+
+  if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, &lenn) != 0)
+  {
+      perror("getsockopt");
+      exit(1);
+  }
+
+  // printf("New: %s\n", buf);
+
 
   if ((bind(sock, (struct sockaddr *)&sin, sizeof(sin))) < 0) {
     perror("simplex-talk: bind");
     exit(1);
   }
   
-  int a = listen(sock, MAX_PENDING);
+  if ((listen(sock, 5)) != 0) {
+    perror("listen");
+    exit(0);
+  }
   
 	
 	

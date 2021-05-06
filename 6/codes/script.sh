@@ -36,20 +36,22 @@ for (( i = 0; i < 3; i++ )); do
 			if (( $isReno==1 ))
 			then
 				echo "======== Reno ========"
+				tcp="reno"
 			else
 				echo "======== Cubic ========"
+				tcp="cubic"
 			fi
 
 			echo -n "" > thput.txt # clear thput
 
 			for (( run = 1; run < 20; run++ )); do
-				echo $run
-				./receiver $isReno &
+				# echo $run
+				./receiver $tcp &
 				P1=$!
-				./sender 0.0.0.0 $isReno >> thput.txt & P2=$!
+				./sender 0.0.0.0 $tcp >> thput.txt & P2=$!
 				# thput=$(./sender 0.0.0.0 $isReno | tail -1 & P2=$!) 
 				wait $P2 # Wait for sender to stop
-				sleep 0.6
+				sleep 1
 				kill -9 $P1 # Stop receiver
 
 				# echo Thput: $thput
@@ -57,8 +59,6 @@ for (( i = 0; i < 3; i++ )); do
 
 				f1='send.txt'
 				f2='recv.txt'
-				wc -l $f1
-				wc -l $f2
 				if ! diff -q $f1 $f2 > /dev/null
 				then
 				  echo "The files are different"

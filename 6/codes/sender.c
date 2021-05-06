@@ -20,7 +20,7 @@ struct stat st;
 int
 main(int argc, char * argv[])
 {
-  int fp;
+  int fp, lenn;
   struct hostent *hp;
   struct sockaddr_in sin;
   char *host;
@@ -45,11 +45,9 @@ main(int argc, char * argv[])
     host = argv[1];
   }
   else {
-    fprintf(stderr, "usage: simplex-talk host isReno\n");
+    fprintf(stderr, "usage: simplex-talk host reno/cubic\n");
     exit(1);
   }
-
-  int reno_cubic = 0; // Change this to automate!!!! 1:reno, 0:cubic
 
 
   /* translate host name into peer's IP address */
@@ -72,18 +70,27 @@ main(int argc, char * argv[])
   }
 
   // select tcp
-  if(reno_cubic == 1){
-    strcpy(tcp_type, "reno");
-  }else{
-    strcpy(tcp_type, "cubic");
+  if(!strcmp(argv[2],"reno")){
+      strcpy(buf, "reno");      
   }
-  int len2 = strlen(tcp_type);
+  else if (!strcmp(argv[2],"cubic")){
+    strcpy(buf, "cubic");
+  }
+  lenn = strlen(buf);
+  if (setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, lenn)!=0)
+  {
+      perror("setsockopt");
+      exit(EXIT_FAILURE);
+  }
 
-  setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, tcp_type, len2);
-  // if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0){
-  //   perror("setsockopt");
-  //   return -1;
-  // }
+  lenn = sizeof(buf);
+
+  if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, &lenn) != 0)
+  {
+      perror("getsockopt");
+      exit(1);
+  }
+
 
 
   if (connect(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
