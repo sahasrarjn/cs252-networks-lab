@@ -49,7 +49,7 @@ main(int argc, char * argv[])
     exit(1);
   }
 
-  int reno_cubic = argv[2]; // Change this to automate!!!! 1:reno, 0:cubic
+  int reno_cubic = strtol(argv[2], NULL, 10); // Change this to automate!!!! 1:reno, 0:cubic
 
 
   /* translate host name into peer's IP address */
@@ -128,7 +128,6 @@ main(int argc, char * argv[])
   close(fp);
   exit(EXIT_SUCCESS);
 }
-
 
 
 

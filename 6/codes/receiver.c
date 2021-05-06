@@ -14,7 +14,7 @@
 #define MAX_LINE     256
 
 int
-main()
+main(int argc, char * argv[])
 {
   struct sockaddr_in sin;
   char buf[MAX_LINE];
@@ -23,9 +23,10 @@ main()
   int sock, new_sock;
   int fp;
   ssize_t bytes_read;
-
+  int reno_cubic = 0;
+  
   if(argc == 2){
-    int reno_cubic = argv[2]; // 1:reno, 0:cubic (No need to change for receiver :P)
+    reno_cubic = strtol(argv[2], NULL, 10); // 1:reno, 0:cubic (No need to change for receiver :P)
   }else{
     fprintf(stderr, "usage: simplex-talk isReno\n");
     exit(1);
@@ -102,7 +103,6 @@ main()
   }
   return 0;
 }
-
 
 
 

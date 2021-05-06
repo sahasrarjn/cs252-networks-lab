@@ -8,8 +8,7 @@ do
 	echo -n "" > f.txt
 done
 
-# yes > send.txt & PID=$!; sleep 0.02; pkill $PID
-# head -c 5M send`.txt > send.txt # File of 5MB size
+yes | head -c 5MB >send.txt
 
 declare -a delays
 delays=( 10ms 50ms 100ms )
@@ -21,18 +20,18 @@ losses=( 0.1% 0.5% 1% )
 gcc -o sender sender.c
 gcc -o receiver receiver.c
 
-ifconfig lo mtu 1500 # which loopback interface
+sudo ifconfig lo mtu 1500 # which loopback interface
 
 for (( i = 0; i < 3; i++ )); do
 	delay=${delays[i]}
 	echo "=============== Delay: "$delay "=============="
 	#### Run .... add ..... $delay if giving errors (i.e. running this command for the first time)
-	tc qdisc change dev lo root netem delay $delay
+	sudo tc qdisc add dev lo root netem delay $delay
 	for (( j = 0; j < 3; j++ )); do
 		loss=${losses[i]}
 		echo "=============== Loss: "$loss "==============="
 	#### Run .... add ..... $delay if giving errors (i.e. running this command for the first time)
-		tc qdisc change dev lo root netem loss $loss
+		sudo tc qdisc change dev lo root netem loss $loss
 		for (( k = 0; k < 2; k++ )); do
 			isReno=$k
 			if (( $isReno==1 ))
@@ -73,6 +72,7 @@ for (( i = 0; i < 3; i++ )); do
 
 				echo Mean Thput: $mean
 				echo Std Dev of Thput: $stddev
+				echo .........................
 		done
 	done
 done
