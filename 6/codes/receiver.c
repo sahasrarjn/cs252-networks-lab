@@ -49,11 +49,13 @@ main(int argc, char * argv[])
     perror("simplex-talk: socket");
     exit(1);
   }
-  
-  int enable = 1;
-  if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0)
-    perror("setsockopt(SO_REUSEADDR) failed");
-  
+
+  int opt=1;
+  if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
+  {
+      perror("setsockopt");
+      exit(EXIT_FAILURE);
+  }
   
   // select tcp
   if(reno_cubic == 1){

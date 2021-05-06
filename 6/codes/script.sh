@@ -1,5 +1,4 @@
 #! /bin/bash
-## Give sudo permissions `sudo ./script.sh`
 
 # send.txt of size 5MB, already in the directory
 for f in recv mean std thput
@@ -21,8 +20,6 @@ gcc -o sender sender.c
 gcc -o receiver receiver.c
 
 #sudo ifconfig lo mtu 1500 # which loopback interface
-
-port=5000
 
 for (( i = 0; i < 3; i++ )); do
 	delay=${delays[i]}
@@ -62,7 +59,7 @@ for (( i = 0; i < 3; i++ )); do
 				f2='recv.txt'
 				if ! diff -q $f1 $f2 > /dev/null
 				then
-				  echo "Error: The files are different or inaccessible"
+				  echo "The files are different"
 				fi
 
 				echo $thput >> thput.txt
@@ -77,7 +74,7 @@ for (( i = 0; i < 3; i++ )); do
 						printf "%f", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
 						}' thput.txt)
 
-			    echo Delay =$delay, Loss=$loss
+			    # echo Delay=$delay, Loss=$loss
 				echo Mean Thput: $mean
 				echo Std Dev of Thput: $stddev
 				echo .........................

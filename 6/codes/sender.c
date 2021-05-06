@@ -118,11 +118,11 @@ main(int argc, char * argv[])
 
   stat(file_path, &st);
   double filesize = st.st_size*8;
-  double time_usec = t1.tv_usec-t0.tv_usec;
+  double time = (t1.tv_usec-t0.tv_usec)/1000000 + (t1.tv_sec-t0.tv_sec);
   //double time_sec = time_usec/1000000.0;
 
 
-  printf("Throughput(bits/sec): \n%lf\n%lf,\t%lf\n", filesize/time_usec * 1000000, filesize, time_usec);
+  printf("Throughput(bits/sec): \n%lf\n", filesize/time);
 
   // free(host);
   close(fp);
