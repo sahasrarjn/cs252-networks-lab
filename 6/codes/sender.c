@@ -77,9 +77,9 @@ main(int argc, char * argv[])
   }else{
     strcpy(tcp_type, "cubic");
   }
-  len = strlen(buf);
+  int len2 = strlen(tcp_type);
 
-  setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len);
+  setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, tcp_type, len2);
   // if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0){
   //   perror("setsockopt");
   //   return -1;
