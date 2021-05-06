@@ -100,6 +100,7 @@ main(int argc, char * argv[])
     // while ((buf_len = recv(new_sock, buf, sizeof(buf), 0)))
     //   fputs(buf, stdout);
     close(new_sock);
+    close(sock);
   }
   return 0;
 }

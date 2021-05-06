@@ -126,6 +126,7 @@ main(int argc, char * argv[])
 
   // free(host);
   close(fp);
+  close(sock);
   exit(EXIT_SUCCESS);
 }
 
