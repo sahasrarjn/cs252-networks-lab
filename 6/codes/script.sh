@@ -22,6 +22,8 @@ gcc -o receiver receiver.c
 
 sudo ifconfig lo mtu 1500 # which loopback interface
 
+port=5000
+
 for (( i = 0; i < 1; i++ )); do
 	delay=${delays[i]}
 	echo "=============== Delay: "$delay "=============="
@@ -45,10 +47,10 @@ for (( i = 0; i < 1; i++ )); do
 
 			for (( run = 1; run < 2; run++ )); do
 				echo $run
-				./receiver $isReno &
+				./receiver $isReno $port &
 				P1=$!
 				echo P1: $P1
-				./sender 0.0.0.0 $isReno & # ectract sender time from here
+				./sender 0.0.0.0 $isReno $port & # ectract sender time from here
 				P2=$!
 				# thput=$(./sender 0.0.0.0 $isReno | tail -1 & P2=$!) 
 				echo boooth: $P1 $P2

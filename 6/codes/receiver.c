@@ -9,7 +9,7 @@
 #include <fcntl.h> // for open
 #include <unistd.h> // for close
 
-#define SERVER_PORT  5432
+// #define SERVER_PORT  5432
 #define MAX_PENDING  5
 #define MAX_LINE     256
 
@@ -24,9 +24,11 @@ main(int argc, char * argv[])
   int fp;
   ssize_t bytes_read;
   int reno_cubic = 0;
+  int SERVER_PORT;
   
-  if(argc == 2){
+  if(argc == 3){
     //reno_cubic = strtol(argv[2], NULL, 10); // 1:reno, 0:cubic (No need to change for receiver :P)
+    SERVER_PORT = argv[3];
   }else{
     fprintf(stderr, "usage: simplex-talk isReno\n");
     exit(1);
