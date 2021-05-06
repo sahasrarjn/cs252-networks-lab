@@ -26,7 +26,7 @@ for (( i = 0; i < 3; i++ )); do
 	delay=${delays[i]}
 	echo "=============== Delay: "$delay "=============="
 	#### Run .... add ..... $delay if giving errors (i.e. running this command for the first time)
-	sudo tc qdisc add dev lo root netem delay $delay
+	sudo tc qdisc change dev lo root netem delay $delay
 	for (( j = 0; j < 3; j++ )); do
 		loss=${losses[i]}
 		echo "=============== Loss: "$loss "==============="
@@ -44,12 +44,14 @@ for (( i = 0; i < 3; i++ )); do
 			echo -n "" > thput.txt # clear thput
 
 			for (( run = 1; run < 21; run++ )); do
+				echo $run
 				./receiver $isReno &
 				P1=$!
 				./sender 0.0.0.0 $isReno & # ectract sender time from here
 				thput=$(cat temp | tail -1 & P2=$!) 
 				wait $P2 # Wait for sender to stop
-				pkill $P1 # Stop receiver
+				echo $P1
+				kill -9 $P1 # Stop receiver
 
 				f1='send.txt'
 				f2='recv.txt'
@@ -70,6 +72,7 @@ for (( i = 0; i < 3; i++ )); do
 						printf "%f", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
 						}' thput.txt)
 
+			    echo Delay =$delay, Loss=$loss
 				echo Mean Thput: $mean
 				echo Std Dev of Thput: $stddev
 				echo .........................

@@ -26,7 +26,7 @@ main(int argc, char * argv[])
   int reno_cubic = 0;
   
   if(argc == 2){
-    reno_cubic = strtol(argv[2], NULL, 10); // 1:reno, 0:cubic (No need to change for receiver :P)
+    //reno_cubic = strtol(argv[2], NULL, 10); // 1:reno, 0:cubic (No need to change for receiver :P)
   }else{
     fprintf(stderr, "usage: simplex-talk isReno\n");
     exit(1);
@@ -59,9 +59,9 @@ main(int argc, char * argv[])
   }else{
     strcpy(tcp_type, "cubic");
   }
-  len = strlen(buf);
+  int len2 = strlen(tcp_type);
 
-  setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len);
+  setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, tcp_type, len2);
   // if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0){
   //   perror("setsockopt");
   //   return -1;
