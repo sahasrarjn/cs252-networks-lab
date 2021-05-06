@@ -51,7 +51,7 @@ main(int argc, char * argv[])
   }
 
   int opt=1;
-  if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
+  if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
   {
       perror("setsockopt");
       exit(EXIT_FAILURE);

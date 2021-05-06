@@ -120,9 +120,9 @@ main(int argc, char * argv[])
   double filesize = st.st_size*8;
   double time = (t1.tv_usec-t0.tv_usec)/1000000 + (t1.tv_sec-t0.tv_sec);
   //double time_sec = time_usec/1000000.0;
+  long long thput = filesize/time;
 
-
-  printf("Throughput(bits/sec): \n%lf\n", filesize/time);
+  printf("%lld", thput);
 
   // free(host);
   close(fp);
