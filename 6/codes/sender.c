@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 
 
-// #define SERVER_PORT 5432
+#define SERVER_PORT 5432
 #define MAX_LINE 256    // Check this for large files
 struct stat st;
 
@@ -32,7 +32,6 @@ main(int argc, char * argv[])
   struct timeval t0, t1;
   
   int sock; // sockfd
-  int SERVER_PORT;
   socklen_t len;
 
   // open file
@@ -42,9 +41,8 @@ main(int argc, char * argv[])
     exit(1);
   }
 
-  if (argc==4) {
+  if (argc==3) {
     host = argv[1];
-    SERVER_PORT = argv[4];
   }
   else {
     fprintf(stderr, "usage: simplex-talk host isReno\n");
@@ -119,12 +117,12 @@ main(int argc, char * argv[])
   gettimeofday(&t1,NULL);
 
   stat(file_path, &st);
-  int filesize = st.st_size*8;
+  double filesize = st.st_size*8;
   double time_usec = t1.tv_usec-t0.tv_usec;
-  double time_sec = time_usec/1000000.0;
+  //double time_sec = time_usec/1000000.0;
 
 
-  printf("Throughput(bits/sec): \n%lf", filesize/time_sec);
+  printf("Throughput(bits/sec): \n%lf\n%lf,\t%lf\n", filesize/time_usec * 1000000, filesize, time_usec);
 
   // free(host);
   close(fp);

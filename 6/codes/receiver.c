@@ -9,14 +9,15 @@
 #include <fcntl.h> // for open
 #include <unistd.h> // for close
 
-// #define SERVER_PORT  5432
+#define SERVER_PORT  5432
 #define MAX_PENDING  5
 #define MAX_LINE     256
 
 int
 main(int argc, char * argv[])
 {
-  struct sockaddr_in sin;
+  struct sockaddr_in sin, cx;
+  socklen_t cxlen = sizeof(cx);
   char buf[MAX_LINE];
   char *file_path = "recv.txt";
   int buf_len, addr_len;
@@ -24,11 +25,9 @@ main(int argc, char * argv[])
   int fp;
   ssize_t bytes_read;
   int reno_cubic = 0;
-  int SERVER_PORT;
   
-  if(argc == 3){
+  if(argc == 2){
     //reno_cubic = strtol(argv[2], NULL, 10); // 1:reno, 0:cubic (No need to change for receiver :P)
-    SERVER_PORT = argv[3];
   }else{
     fprintf(stderr, "usage: simplex-talk isReno\n");
     exit(1);
@@ -42,19 +41,20 @@ main(int argc, char * argv[])
   sin.sin_family = AF_INET;
   sin.sin_addr.s_addr = INADDR_ANY;
   sin.sin_port = htons(SERVER_PORT);
+  
+ bzero((char*) &cx, sizeof(cx)); 
 
   /* setup passive open */
   if ((sock = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
     perror("simplex-talk: socket");
     exit(1);
   }
-  if ((bind(sock, (struct sockaddr *)&sin, sizeof(sin))) < 0) {
-    perror("simplex-talk: bind");
-    exit(1);
-  }
-  listen(sock, MAX_PENDING);
-
-
+  
+  int enable = 1;
+  if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0)
+    perror("setsockopt(SO_REUSEADDR) failed");
+  
+  
   // select tcp
   if(reno_cubic == 1){
     strcpy(tcp_type, "reno");
@@ -63,16 +63,24 @@ main(int argc, char * argv[])
   }
   int len2 = strlen(tcp_type);
 
-  setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, tcp_type, len2);
-  // if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0){
-  //   perror("setsockopt");
-  //   return -1;
-  // }
+  
+  if(setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, tcp_type, len2) != 0){
+    perror("setsockopt");
+    return -1;
+  }
 
-
+  if ((bind(sock, (struct sockaddr *)&sin, sizeof(sin))) < 0) {
+    perror("simplex-talk: bind");
+    exit(1);
+  }
+  
+  int a = listen(sock, MAX_PENDING);
+  
+	
+	
  /* wait for connection, then receive and print text */
   while(1) {
-    if ((new_sock = accept(sock, (struct sockaddr *)&sin, &addr_len)) < 0) {
+    if ((new_sock = accept(sock, (struct sockaddr *)&cx, &cxlen)) < 0) {
       perror("simplex-talk: accept");
       exit(1);
     }
@@ -102,14 +110,8 @@ main(int argc, char * argv[])
     // while ((buf_len = recv(new_sock, buf, sizeof(buf), 0)))
     //   fputs(buf, stdout);
     close(new_sock);
-    close(sock);
+   // close(sock);
   }
+	close(sock);
   return 0;
 }
-
-
-
-
-
-
-

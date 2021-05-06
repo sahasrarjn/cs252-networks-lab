@@ -20,21 +20,21 @@ losses=( 0.1% 0.5% 1% )
 gcc -o sender sender.c
 gcc -o receiver receiver.c
 
-sudo ifconfig lo mtu 1500 # which loopback interface
+#sudo ifconfig lo mtu 1500 # which loopback interface
 
 port=5000
 
-for (( i = 0; i < 1; i++ )); do
+for (( i = 0; i < 3; i++ )); do
 	delay=${delays[i]}
 	echo "=============== Delay: "$delay "=============="
 	#### Run .... add ..... $delay if giving errors (i.e. running this command for the first time)
-	sudo tc qdisc change dev lo root netem delay $delay
-	for (( j = 0; j < 1; j++ )); do
+#	sudo tc qdisc change dev lo root netem delay $delay
+	for (( j = 0; j < 3; j++ )); do
 		loss=${losses[i]}
 		echo "=============== Loss: "$loss "==============="
 	#### Run .... add ..... $delay if giving errors (i.e. running this command for the first time)
-		sudo tc qdisc change dev lo root netem loss $loss
-		for (( k = 0; k < 1; k++ )); do
+#		sudo tc qdisc change dev lo root netem loss $loss
+		for (( k = 0; k < 2; k++ )); do
 			isReno=$k
 			if (( $isReno==1 ))
 			then
@@ -45,17 +45,17 @@ for (( i = 0; i < 1; i++ )); do
 
 			echo -n "" > thput.txt # clear thput
 
-			for (( run = 1; run < 2; run++ )); do
+			for (( run = 1; run < 20; run++ )); do
 				echo $run
-				./receiver $isReno $port &
+				./receiver $isReno &
 				P1=$!
-				echo P1: $P1
-				./sender 0.0.0.0 $isReno $port & # ectract sender time from here
+				#echo P1: $P1
+				./sender 0.0.0.0 $isReno & # ectract sender time from here
 				P2=$!
 				# thput=$(./sender 0.0.0.0 $isReno | tail -1 & P2=$!) 
-				echo boooth: $P1 $P2
+				#echo boooth: $P1 $P2
 				wait $P2 # Wait for sender to stop
-				echo $P1
+				#echo $P1
 				kill -9 $P1 # Stop receiver
 
 				f1='send.txt'
