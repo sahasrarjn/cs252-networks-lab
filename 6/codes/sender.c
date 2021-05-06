@@ -9,9 +9,13 @@
 #include <sys/time.h>
 #include <netinet/tcp.h>
 #include <netdb.h>
+#include <sys/stat.h>
+
 
 #define SERVER_PORT 5432
 #define MAX_LINE 256    // Check this for large files
+struct stat st;
+
 
 int
 main(int argc, char * argv[])
@@ -112,8 +116,13 @@ main(int argc, char * argv[])
   }
   gettimeofday(&t1,NULL);
 
+  stat(file_path, &st);
+  int filesize = st.st_size*8;
+  double time_usec = t1.tv_usec-t0.tv_usec;
+  double time_sec = time_usec/1000000.0;
 
-  printf("Time taken to transfer the file (in micro-seconds): \n%ld", t1.tv_usec-t0.tv_usec);
+
+  printf("Throughput(bits/sec): \n%lf", filesize/time_sec);
 
   // free(host);
   close(fp);
