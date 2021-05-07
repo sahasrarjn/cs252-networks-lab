@@ -51,7 +51,7 @@ for i in range(0,3):
 	fig = plt.figure()
 	plt.errorbar(delays, mu_cubic[:][i], yerr=(1.64/math.sqrt(20))*sd_cubic[:][i],label='cubic')
 	plt.errorbar(delays, mu_reno[:][i], yerr=(1.64/math.sqrt(20))*sd_reno[:][i],label='reno')
-	plt.title('Error = %0.1f%%' %losses[i])
+	plt.title('Loss = %0.1f%%' %losses[i])
 	plt.grid()
 	plt.xlabel("Delay (in ms)")
 	plt.ylabel("Throughput (in bps)")
