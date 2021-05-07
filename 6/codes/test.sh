@@ -1,0 +1,6 @@
+stddev=$(awk '{for(i=1;i<=NF;i++) {sum[i] += $i; sumsq[i] += ($i)^2}} 
+						END {for (i=1;i<=NF;i++) {
+						printf "%f", sqrt((sumsq[i]-sum[i]^2/NR)/NR)}
+						}' thput.txt)
+
+echo $stddev
