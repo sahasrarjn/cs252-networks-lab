@@ -52,9 +52,10 @@ for i in range(0,3):
 	plt.errorbar(delays, mu_cubic[:][i], yerr=(1.64/math.sqrt(20))*sd_cubic[:][i],label='cubic')
 	plt.errorbar(delays, mu_reno[:][i], yerr=(1.64/math.sqrt(20))*sd_reno[:][i],label='reno')
 	plt.title('Error = %0.1f%%' %losses[i])
+	plt.grid()
 	plt.xlabel("Delay (in ms)")
 	plt.ylabel("Throughput (in bps)")
-	plt.grid()
+	plt.legend(loc='upper right')
 	plt.savefig('Plot %i' %(i+1))
 
 for i in range(0,3):
@@ -62,9 +63,10 @@ for i in range(0,3):
 	plt.errorbar(losses, mu_cubic[i][:], yerr=(1.64/math.sqrt(20))*sd_cubic[i][:],label='cubic')
 	plt.errorbar(losses, mu_reno[i][:], yerr=(1.64/math.sqrt(20))*sd_reno[i][:],label='reno')
 	plt.title('Delay = %i ms' %delays[i])
+	plt.grid()
 	plt.xlabel("Loss (in %)")
 	plt.ylabel("Throughput (in bps)")
-	plt.grid()
+	plt.legend(loc='upper right')
 	plt.savefig('Plot %i' %(i+4))
 
 
