@@ -45,22 +45,28 @@ for (( i = 0; i < 3; i++ )); do
 			echo -n "" > thput.txt # clear thput
 
 			for (( run = 1; run < 20; run++ )); do
+				echo $run
+				if [[ $(lsof -t -i:5432) ]] 
+				then
+					kill -9 $(lsof -t -i:5432)
+				fi
 				# echo $run
-				./receiver $tcp &
+				./receiver $tcp >> thput.txt &
 				P1=$!
-				./sender 0.0.0.0 $tcp >> thput.txt & P2=$!
-				# thput=$(./sender 0.0.0.0 $isReno | tail -1 & P2=$!) 
-				wait $P2 # Wait for sender to stop
-				sleep 1
-				kill -9 $P1 # Stop receiver
 
-				# echo Thput: $thput
-				echo $thput >> thput.txt
+				if [[ $(lsof -t -i:5432) ]] 
+				then
+					./sender $tcp & P2=$!
+				else
+					sleep 1
+					./sender $tcp & P2=$!
+				fi
+				
+				wait $P2 $P1 # Wait for sender to stop
+				
 
 				f1='send.txt'
 				f2='recv.txt'
-				wc $f1
-				wc $f2
 				if ! diff -q $f1 $f2 > /dev/null
 				then
 				  echo "The files are different"

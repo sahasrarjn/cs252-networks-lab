@@ -39,11 +39,11 @@ main(int argc, char * argv[])
     exit(1);
   }
 
-  if (argc==3) {
-    host = argv[1];
+  if (argc==2) {
+    host = "0.0.0.0";
   }
   else {
-    fprintf(stderr, "usage: simplex-talk host reno/cubic\n");
+    fprintf(stderr, "usage: simplex-talk reno/cubic\n");
     exit(1);
   }
 
@@ -75,10 +75,10 @@ main(int argc, char * argv[])
   }
 
   // select tcp
-  if(!strcmp(argv[2],"reno")){
+  if(!strcmp(argv[1],"reno")){
       strcpy(buf, "reno");      
   }
-  else if (!strcmp(argv[2],"cubic")){
+  else if (!strcmp(argv[1],"cubic")){
     strcpy(buf, "cubic");
   }
   lenn = strlen(buf);

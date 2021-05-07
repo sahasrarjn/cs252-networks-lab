@@ -8,10 +8,13 @@
 #include <netinet/tcp.h>
 #include <fcntl.h> // for open
 #include <unistd.h> // for close
+#include <sys/time.h>
+#include <sys/stat.h>
 
 #define SERVER_PORT  5432
 #define MAX_PENDING  5
 #define MAX_LINE     256
+struct stat st;
 
 int
 main(int argc, char * argv[])
@@ -111,8 +114,8 @@ main(int argc, char * argv[])
  /* wait for connection, then receive and print text */
   while(1) {
 
+    gettimeofday(&t0,NULL);
     do {
-      gettimeofday(&t1,NULL);
       bytes_read = read(new_sock, buf, MAX_LINE); // check if sizeof(buf) works
       if(bytes_read == -1){
         perror("simplex-talk: read");
@@ -127,20 +130,22 @@ main(int argc, char * argv[])
     } while(bytes_read > 0);
     gettimeofday(&t1,NULL);
 
-    stat(file_path, &st);
-    double filesize = st.st_size*8;
-    double time = (t1.tv_usec-t0.tv_usec)/1000000 + (t1.tv_sec-t0.tv_sec);
-    //double time_sec = time_usec/1000000.0;
-    long long thput = filesize/time;
-
-    printf("%lld", thput);
-
-
-    // while ((buf_len = recv(new_sock, buf, sizeof(buf), 0)))
-    //   fputs(buf, stdout);
-   // close(sock);
+    if(bytes_read == 0){
+      break;
+    }
+    
   }
+
+  stat(file_path, &st);
+  double filesize = st.st_size*8;
+  double time = (t1.tv_usec-t0.tv_usec)/1000000 + (t1.tv_sec-t0.tv_sec);
+  //double time_sec = time_usec/1000000.0;
+  long long thput = filesize/time;
+
+  printf("%lld\n", thput);
+
   close(fp);
+  close(new_sock);
 	close(sock);
   return 0;
 }
