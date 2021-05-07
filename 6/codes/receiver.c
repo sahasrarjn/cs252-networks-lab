@@ -25,6 +25,8 @@ main(int argc, char * argv[])
   int fp, lenn;
   ssize_t bytes_read;
   int reno_cubic = 0;
+  struct timeval t0, t1;
+  
   
   if(argc != 2){
     fprintf(stderr, "usage: simplex-talk reno/cubic\n");
@@ -108,7 +110,9 @@ main(int argc, char * argv[])
 	
  /* wait for connection, then receive and print text */
   while(1) {
+
     do {
+      gettimeofday(&t1,NULL);
       bytes_read = read(new_sock, buf, MAX_LINE); // check if sizeof(buf) works
       if(bytes_read == -1){
         perror("simplex-talk: read");
@@ -121,6 +125,16 @@ main(int argc, char * argv[])
         exit(1);
       }
     } while(bytes_read > 0);
+    gettimeofday(&t1,NULL);
+
+    stat(file_path, &st);
+    double filesize = st.st_size*8;
+    double time = (t1.tv_usec-t0.tv_usec)/1000000 + (t1.tv_sec-t0.tv_sec);
+    //double time_sec = time_usec/1000000.0;
+    long long thput = filesize/time;
+
+    printf("%lld", thput);
+
 
     // while ((buf_len = recv(new_sock, buf, sizeof(buf), 0)))
     //   fputs(buf, stdout);

@@ -28,8 +28,6 @@ main(int argc, char * argv[])
   char buf[MAX_LINE];
 
   char tcp_type[MAX_LINE];
-
-  struct timeval t0, t1;
   
   int sock; // sockfd
   socklen_t len;
@@ -109,7 +107,6 @@ main(int argc, char * argv[])
 
 
 
-  gettimeofday(&t0,NULL);
   while(1){
     int bytes_read = read(fp, buf, sizeof(buf));
     if(bytes_read == 0)
@@ -130,16 +127,8 @@ main(int argc, char * argv[])
 
     
   }
-  gettimeofday(&t1,NULL);
 
-  stat(file_path, &st);
-  double filesize = st.st_size*8;
-  double time = (t1.tv_usec-t0.tv_usec)/1000000 + (t1.tv_sec-t0.tv_sec);
-  //double time_sec = time_usec/1000000.0;
-  long long thput = filesize/time;
-
-  printf("%lld", thput);
-
+  
   // free(host);
   close(fp);
   close(sock);
