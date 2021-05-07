@@ -138,9 +138,9 @@ main(int argc, char * argv[])
 
   stat(file_path, &st);
   double filesize = st.st_size*8;
-  double time = (t1.tv_usec-t0.tv_usec)/1000000 + (t1.tv_sec-t0.tv_sec);
+  double time = (t1.tv_usec-t0.tv_usec) + (t1.tv_sec-t0.tv_sec)*1000000;
   //double time_sec = time_usec/1000000.0;
-  long long thput = filesize/time;
+  long long thput = filesize/time * 1000000;
 
   printf("%lld\n", thput);
 
