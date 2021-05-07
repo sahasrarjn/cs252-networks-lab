@@ -19,19 +19,19 @@ losses=( 0.1% 0.5% 1% )
 gcc -o sender sender.c
 gcc -o receiver receiver.c
 
-#sudo ifconfig lo mtu 1500 # which loopback interface
+sudo ifconfig lo mtu 1500 # which loopback interface
 
-for (( i = 0; i < 3; i++ )); do
+for (( i = 2; i < 3; i++ )); do
 	delay=${delays[i]}
 	echo "=============== Delay: "$delay "=============="
 	#### Run .... add ..... $delay if giving errors (i.e. running this command for the first time)
-#	sudo tc qdisc change dev lo root netem delay $delay
-	for (( j = 0; j < 3; j++ )); do
+	sudo tc qdisc change dev lo root netem delay $delay
+	for (( j = 2; j < 3; j++ )); do
 		loss=${losses[i]}
 		echo "=============== Loss: "$loss "==============="
 	#### Run .... add ..... $delay if giving errors (i.e. running this command for the first time)
-#		sudo tc qdisc change dev lo root netem loss $loss
-		for (( k = 0; k < 2; k++ )); do
+		sudo tc qdisc change dev lo root netem loss $loss
+		for (( k = 1; k < 2; k++ )); do
 			isReno=$k
 			if (( $isReno==1 ))
 			then
@@ -45,7 +45,6 @@ for (( i = 0; i < 3; i++ )); do
 			echo -n "" > thput.txt # clear thput
 
 			for (( run = 1; run < 20; run++ )); do
-				echo $run
 				if [[ $(lsof -t -i:5432) ]] 
 				then
 					kill -9 $(lsof -t -i:5432)
