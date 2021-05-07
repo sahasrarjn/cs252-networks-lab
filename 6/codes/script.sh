@@ -28,7 +28,9 @@ for (( i = 0; i < 3; i++ )); do
 		loss=${losses[j]}
 		echo Loss: $loss
 	#### Run .... add ..... $delay if giving errors (i.e. running this command for the first time)
+		# sudo tc qdisc change dev lo root netem loss $loss delay $delay 
 		sudo tc qdisc change dev lo root netem loss $loss delay $delay
+
 		for (( k = 0; k < 2; k++ )); do
 			isReno=$k
 			if (( $isReno==1 ))
