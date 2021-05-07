@@ -13,7 +13,7 @@
 
 #define SERVER_PORT  5432
 #define MAX_PENDING  5
-#define MAX_LINE     256
+#define MAX_LINE     1500
 struct stat st;
 
 int

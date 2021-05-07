@@ -13,7 +13,7 @@
 
 
 #define SERVER_PORT 5432
-#define MAX_LINE 256    // Check this for large files
+#define MAX_LINE 1500    // Check this for large files
 struct stat st;
 
 
