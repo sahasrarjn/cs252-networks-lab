@@ -60,8 +60,8 @@ for i in range(0,3):
 
 for i in range(0,3):
 	fig = plt.figure()
-	plt.errorbar(losses, mu_cubic[i][:], yerr=(1.645/math.sqrt(20))*sd_cubic[i][:],label='cubic')
-	plt.errorbar(losses, mu_reno[i][:], yerr=(1.645/math.sqrt(20))*sd_reno[i][:],label='reno')
+	plt.errorbar(losses, [row[i] for row in mu_cubic], yerr=(1.645/math.sqrt(20))*numpy.array([row[i] for row in sd_cubic]),label='cubic')
+	plt.errorbar(losses, [row[i] for row in mu_reno], yerr=(1.645/math.sqrt(20))*numpy.array([row[i] for row in sd_reno]),label='reno')
 	plt.title('Delay = %i ms' %delays[i])
 	plt.grid()
 	plt.xlabel("Loss (in %)")
