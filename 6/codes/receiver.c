@@ -43,7 +43,7 @@ main(int argc, char * argv[])
  bzero((char*) &cx, sizeof(cx)); 
 
   /* setup passive open */
-  if ((sock = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
+  if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
     perror("simplex-talk: socket");
     exit(1);
   }
@@ -56,6 +56,11 @@ main(int argc, char * argv[])
       exit(EXIT_FAILURE);
   }
   
+
+  if ((bind(sock, (struct sockaddr *)&sin, sizeof(sin))) < 0) {
+    perror("simplex-talk: bind");
+    exit(1);
+  }
 
   
   if(!strcmp(argv[1],"reno")){
@@ -81,40 +86,35 @@ main(int argc, char * argv[])
 
   // printf("New: %s\n", buf);
 
-
-  if ((bind(sock, (struct sockaddr *)&sin, sizeof(sin))) < 0) {
-    perror("simplex-talk: bind");
-    exit(1);
-  }
   
   if ((listen(sock, 5)) != 0) {
     perror("listen");
     exit(0);
   }
   
+  if((new_sock = accept(sock, (struct sockaddr *)&cx, &cxlen)) < 0) {
+    perror("simplex-talk: accept");
+    exit(1);
+  }
+
 	
+  fp = open(file_path, 
+                O_WRONLY | O_CREAT | O_TRUNC, 
+                S_IRUSR | S_IWUSR);
+  if(fp == -1){
+    perror("simplex-talk: file-open");
+    exit(1);
+  }
 	
  /* wait for connection, then receive and print text */
   while(1) {
-    if ((new_sock = accept(sock, (struct sockaddr *)&cx, &cxlen)) < 0) {
-      perror("simplex-talk: accept");
-      exit(1);
-    }
-
-    fp = open(file_path, 
-                  O_WRONLY | O_CREAT | O_TRUNC, 
-                  S_IRUSR | S_IWUSR);
-    if(fp == -1){
-      perror("simplex-talk: file-open");
-      exit(1);
-    }
-
     do {
       bytes_read = read(new_sock, buf, MAX_LINE); // check if sizeof(buf) works
-      if(bytes_read == 1){
+      if(bytes_read == -1){
         perror("simplex-talk: read");
         exit(1);
       }
+
 
       if(write(fp, buf, bytes_read) == -1){
         perror("simplex-talk: write");
@@ -122,12 +122,11 @@ main(int argc, char * argv[])
       }
     } while(bytes_read > 0);
 
-    close(fp);
     // while ((buf_len = recv(new_sock, buf, sizeof(buf), 0)))
     //   fputs(buf, stdout);
-    close(new_sock);
    // close(sock);
   }
+  close(fp);
 	close(sock);
   return 0;
 }

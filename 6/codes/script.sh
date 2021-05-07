@@ -59,6 +59,8 @@ for (( i = 0; i < 3; i++ )); do
 
 				f1='send.txt'
 				f2='recv.txt'
+				wc $f1
+				wc $f2
 				if ! diff -q $f1 $f2 > /dev/null
 				then
 				  echo "The files are different"

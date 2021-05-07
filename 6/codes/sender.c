@@ -64,9 +64,16 @@ main(int argc, char * argv[])
   sin.sin_port = htons(SERVER_PORT);
 
   /* active open */
-  if ((sock = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
+  if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
     perror("simplex-talk: socket");
     exit(1);
+  }
+
+  int opt=1;
+  if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
+  {
+      perror("setsockopt");
+      exit(EXIT_FAILURE);
   }
 
   // select tcp
@@ -112,6 +119,8 @@ main(int argc, char * argv[])
       printf("simlpex-talk: no bytes read\n");
       exit(1);
     }
+
+    // printf("%s\n", buf);
 
 
     if (write(sock, buf, bytes_read) == -1) {
