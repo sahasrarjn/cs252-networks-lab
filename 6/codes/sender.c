@@ -1,3 +1,16 @@
+/*
+This is the socket code for sender (client) side of the TCP setup used for this assignment
+TCP connection can be set for either reno or cubic (both available of linux systems)
+
+Usage: 
+gcc -o sender sender.c
+./sender {reno|cubic}
+
+Must run this after starting the receiver (server) side or else it will show connection issue
+*/
+
+
+/* Headers */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,24 +26,23 @@
 
 
 #define SERVER_PORT 5432
-#define MAX_LINE 1500    // Check this for large files
-struct stat st;
+#define MAX_LINE 1500     // Max buffer size
 
 
 int
 main(int argc, char * argv[])
 {
+  // Declarations
   int fp, lenn;
   struct hostent *hp;
   struct sockaddr_in sin;
   char *host;
   char *file_path = "send.txt";
   char buf[MAX_LINE];
-
   char tcp_type[MAX_LINE];
-  
-  int sock; // sockfd
+  int sock;
   socklen_t len;
+  host = "0.0.0.0";
 
   // open file
   fp = open(file_path, O_RDONLY);
@@ -39,11 +51,9 @@ main(int argc, char * argv[])
     exit(1);
   }
 
-  if (argc==2) {
-    host = "0.0.0.0";
-  }
-  else {
-    fprintf(stderr, "usage: simplex-talk reno/cubic\n");
+  // Usage instrcutions
+  if (argc!=2) {
+    fprintf(stderr, "usage: ./sender {reno|cubic}\n");
     exit(1);
   }
 
@@ -67,6 +77,7 @@ main(int argc, char * argv[])
     exit(1);
   }
 
+  /* Set socker option to reuse address and port again */
   int opt=1;
   if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
   {
@@ -74,7 +85,7 @@ main(int argc, char * argv[])
       exit(EXIT_FAILURE);
   }
 
-  // select tcp
+  // select tcp type, reno or cubic
   if(!strcmp(argv[1],"reno")){
       strcpy(buf, "reno");      
   }
@@ -82,22 +93,17 @@ main(int argc, char * argv[])
     strcpy(buf, "cubic");
   }
   lenn = strlen(buf);
+
+  // Set TCP type = {reno|cubic}
   if (setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, lenn)!=0)
   {
       perror("setsockopt");
       exit(EXIT_FAILURE);
   }
 
-  lenn = sizeof(buf);
-
-  if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, &lenn) != 0)
-  {
-      perror("getsockopt");
-      exit(1);
-  }
 
 
-
+  /* Setup connection with the server */
   if (connect(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
   {
     perror("simplex-talk: connect");
@@ -106,30 +112,31 @@ main(int argc, char * argv[])
   }
 
 
-
+  /* Send file content */
   while(1){
+    // Read file contents
     int bytes_read = read(fp, buf, sizeof(buf));
-    if(bytes_read == 0)
+    if(bytes_read == 0){
+      // nothing left to send
       break;
+    }
 
     if(bytes_read < 0){
+      // Byte error
       printf("simlpex-talk: no bytes read\n");
       exit(1);
     }
 
-    // printf("%s\n", buf);
-
-
+    // Write to receiver socket
     if (write(sock, buf, bytes_read) == -1) {
         perror("write");
         exit(EXIT_FAILURE);
     }
-
     
   }
 
   
-  // free(host);
+  // Close file and socket
   close(fp);
   close(sock);
   exit(EXIT_SUCCESS);
