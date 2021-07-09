@@ -1,0 +1,146 @@
+Sender Window Size: 8000
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		1934040
+  Tx Packets		3291
+  Rx Bytes		1926984
+  Rx Packet		3279
+  Input Load		3024.71 Kbps
+  Observed Throughput	3011.56 Kbps
+  Mean delay		0.0108997
+  Mean jitter		0.000591818
+Flow ID: 2
+Src Addr: 10.1.1.2 ----- Dst Addr: 10.1.1.1
+
+  Tx Bytes		85284
+  Tx Packets		1640
+  Rx Bytes		85232
+  Rx Packet		1639
+  Input Load		133.554 Kbps
+  Observed Throughput	133.566 Kbps
+  Mean delay		0.010054
+  Mean jitter		2.442e-09
+
+
+
+
+Sender Window Size: 16000
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		3972636
+  Tx Packets		6758
+  Rx Bytes		3966168
+  Rx Packet		6747
+  Input Load		6208.59 Kbps
+  Observed Throughput	6197.78 Kbps
+  Mean delay		0.0109191
+  Mean jitter		0.000592195
+Flow ID: 2
+Src Addr: 10.1.1.2 ----- Dst Addr: 10.1.1.1
+
+  Tx Bytes		175452
+  Tx Packets		3374
+  Rx Bytes		174984
+  Rx Packet		3365
+  Input Load		274.725 Kbps
+  Observed Throughput	274.023 Kbps
+  Mean delay		0.010054
+  Mean jitter		1.18906e-09
+
+
+
+
+Sender Window Size: 32000
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		4976940
+  Tx Packets		8466
+  Rx Bytes		4952832
+  Rx Packet		8425
+  Input Load		7777.75 Kbps
+  Observed Throughput	7739.2 Kbps
+  Mean delay		0.0244806
+  Mean jitter		0.000592247
+Flow ID: 2
+Src Addr: 10.1.1.2 ----- Dst Addr: 10.1.1.1
+
+  Tx Bytes		219080
+  Tx Packets		4213
+  Rx Bytes		218612
+  Rx Packet		4204
+  Input Load		343.02 Kbps
+  Observed Throughput	342.326 Kbps
+  Mean delay		0.010054
+  Mean jitter		9.51701e-10
+
+
+
+
+Sender Window Size: 64000
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		4394232
+  Tx Packets		7475
+  Rx Bytes		4368948
+  Rx Packet		7432
+  Input Load		6866.84 Kbps
+  Observed Throughput	6826.55 Kbps
+  Mean delay		0.0193398
+  Mean jitter		0.000599618
+Flow ID: 2
+Src Addr: 10.1.1.2 ----- Dst Addr: 10.1.1.1
+
+  Tx Bytes		199944
+  Tx Packets		3815
+  Rx Bytes		199476
+  Rx Packet		3806
+  Input Load		313.045 Kbps
+  Observed Throughput	312.348 Kbps
+  Mean delay		0.0100544
+  Mean jitter		1.36647e-08
+
+
+
+
+Sender Window Size: 128000
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		4387348
+  Tx Packets		7464
+  Rx Bytes		4361476
+  Rx Packet		7420
+  Input Load		6855.28 Kbps
+  Observed Throughput	6814.89 Kbps
+  Mean delay		0.0223309
+  Mean jitter		0.000608985
+Flow ID: 2
+Src Addr: 10.1.1.2 ----- Dst Addr: 10.1.1.1
+
+  Tx Bytes		204264
+  Tx Packets		3869
+  Rx Bytes		203848
+  Rx Packet		3861
+  Input Load		319.847 Kbps
+  Observed Throughput	319.157 Kbps
+  Mean delay		0.0100548
+  Mean jitter		1.76155e-08

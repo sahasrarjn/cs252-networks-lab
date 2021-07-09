@@ -1,0 +1,129 @@
+CBRdataRate: 448Kbps
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		294840
+  Tx Packets		546
+  Rx Bytes		294300
+  Rx Packet		545
+  Input Load		462.272 Kbps
+  Observed Throughput	461.296 Kbps
+  Mean delay		0.010542
+  Mean jitter		0
+
+
+
+
+CBRdataRate: 896Kbps
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		590220
+  Tx Packets		1093
+  Rx Bytes		589140
+  Rx Packet		1091
+  Input Load		923.697 Kbps
+  Observed Throughput	921.748 Kbps
+  Mean delay		0.010542
+  Mean jitter		0
+
+
+
+
+CBRdataRate: 1792Kbps
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		1180980
+  Tx Packets		2187
+  Rx Bytes		1178280
+  Rx Packet		2182
+  Input Load		1846.55 Kbps
+  Observed Throughput	1842.65 Kbps
+  Mean delay		0.010542
+  Mean jitter		0
+
+
+
+
+CBRdataRate: 3584Kbps
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		2362500
+  Tx Packets		4375
+  Rx Bytes		2357100
+  Rx Packet		4365
+  Input Load		3692.25 Kbps
+  Observed Throughput	3684.46 Kbps
+  Mean delay		0.010542
+  Mean jitter		0
+
+
+
+
+CBRdataRate: 7168Kbps
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		4725000
+  Tx Packets		8750
+  Rx Bytes		4714740
+  Rx Packet		8731
+  Input Load		7383.66 Kbps
+  Observed Throughput	7368.1 Kbps
+  Mean delay		0.010542
+  Mean jitter		0
+
+
+
+
+CBRdataRate: 14336Kbps
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		9450000
+  Tx Packets		17500
+  Rx Bytes		4971240
+  Rx Packet		9206
+  Input Load		14766.5 Kbps
+  Observed Throughput	7768.12 Kbps
+  Mean delay		1.12945
+  Mean jitter		0.000240709
+
+
+
+
+CBRdataRate: 28672Kbps
+
+====================== Flow monitor statistics ====================== 
+
+Flow ID: 1
+Src Addr: 10.1.1.1 ----- Dst Addr: 10.1.1.2
+
+  Tx Bytes		18900000
+  Tx Packets		35000
+  Rx Bytes		4971240
+  Rx Packet		9206
+  Input Load		29532.1 Kbps
+  Observed Throughput	7768.12 Kbps
+  Mean delay		1.81706
+  Mean jitter		0.000389287
